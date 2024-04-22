@@ -1,0 +1,559 @@
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21eb8
+Name           : DDR1_clus_standard
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/Install/Evaluation_X/gallery/app/Script/LigScript/DDR1
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2//ligprep -inp DDR1_clus_standard.inp -HOST localhost:12 -NJOBS 12 -TMPLAUNCHDIR -WAIT
+StartTime      : 2024-01-13-13:25:13
+--------------------------------------------------------------------------------
+LigPrep: preparing subjobs
+
+Running subjobs on hosts:
+  localhost (Max: 12)
+Number of jobs:       10
+Max retries per job:  2
+Max allowed failures: unlimited
+Verbosity:            normal
+
+Starting JobDJ...
+
+Keep one job on driver host: False
+Smart license checking: False
+JobDJ columns:
+  C: Number of completed subjobs
+  A: Number of active subjobs (e.g., submitted, running)
+  W: Number of waiting/pending subjobs
+
+ C  A  W | Activity  JobId  JobName  JobHost
+-- -- -- | --------- -----------------------
+ 0  1  9 | launched  finestation-0-65a21ebb DDR1_clus_standard-01 localhost [finestation]
+ 0  2  8 | launched  finestation-0-65a21ebd DDR1_clus_standard-02 localhost [finestation]
+ 0  3  7 | launched  finestation-0-65a21ebf DDR1_clus_standard-03 localhost [finestation]
+ 0  4  6 | launched  finestation-0-65a21ec0 DDR1_clus_standard-04 localhost [finestation]
+ 0  5  5 | launched  finestation-0-65a21ec2 DDR1_clus_standard-05 localhost [finestation]
+ 0  6  4 | launched  finestation-0-65a21ec4 DDR1_clus_standard-06 localhost [finestation]
+ 0  7  3 | launched  finestation-0-65a21ec5 DDR1_clus_standard-07 localhost [finestation]
+ 0  8  2 | launched  finestation-0-65a21ec7 DDR1_clus_standard-08 localhost [finestation]
+ 0  9  1 | launched  finestation-0-65a21ec8 DDR1_clus_standard-09 localhost [finestation]
+ 0 10  0 | launched  finestation-0-65a21eca DDR1_clus_standard-10 localhost [finestation]
+ 1  9  0 | finished  finestation-0-65a21ec2 DDR1_clus_standard-05 localhost [finestation]
+ 2  8  0 | finished  finestation-0-65a21ebb DDR1_clus_standard-01 localhost [finestation]
+ 3  7  0 | finished  finestation-0-65a21ec0 DDR1_clus_standard-04 localhost [finestation]
+ 4  6  0 | finished  finestation-0-65a21ec4 DDR1_clus_standard-06 localhost [finestation]
+ 5  5  0 | finished  finestation-0-65a21ec7 DDR1_clus_standard-08 localhost [finestation]
+ 6  4  0 | finished  finestation-0-65a21ec8 DDR1_clus_standard-09 localhost [finestation]
+ 7  3  0 | finished  finestation-0-65a21eca DDR1_clus_standard-10 localhost [finestation]
+ 8  2  0 | finished  finestation-0-65a21ebd DDR1_clus_standard-02 localhost [finestation]
+ 9  1  0 | finished  finestation-0-65a21ec5 DDR1_clus_standard-07 localhost [finestation]
+10  0  0 | finished  finestation-0-65a21ebf DDR1_clus_standard-03 localhost [finestation]
+
+All jobs have completed.
+
+10 of 10 job(s) succeeded; 0 job(s) failed.
+
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-01
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ebb
+Name           : DDR1_clus_standard-01
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-01
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 1 -icsv in_DDR1_clus_standard-01.csv -omae DDR1_clus_standard-01.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:16
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 1 -icsv in_DDR1_clus_standard-01.csv -omae DDR1_clus_standard-01.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 0 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-01.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+       1   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_1'
+Adding general crowding pattern: count 1
+number of matches for crowding type: deprotonated_amide_ortho_to_aromatic_nX2: abs type: General aromatic protonated n (formally charged): 1
+Adding general crowding pattern: count 1
+number of matches for crowding type: deprotonated_amide_ortho_to_aromatic_nX2: abs type: General aromatic protonated n (formally charged): 1
+       2   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_2'
+       3   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_3'
+       4   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_4'
+       5   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_5'
+
+# of processed structures in "DDR1_clus_standard-01.maegz" : 9
+# of dropped structures in "DDR1_clus_standard-01-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 20.673 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-02
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ebd
+Name           : DDR1_clus_standard-02
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-02
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 6 -icsv in_DDR1_clus_standard-02.csv -omae DDR1_clus_standard-02.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:17
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 6 -icsv in_DDR1_clus_standard-02.csv -omae DDR1_clus_standard-02.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 5 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-02.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+       6   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_6'
+       7   1/0     1/0     1/0     1/0     1/0     2/0     4/0     4/0     4/0   'lig_7'
+       8   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_8'
+       9   1/0     1/0     1/0     1/0     1/0     5/0     5/0     5/0     5/0   'lig_9'
+      10   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_10'
+
+# of processed structures in "DDR1_clus_standard-02.maegz" : 14
+# of dropped structures in "DDR1_clus_standard-02-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 32.167 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-03
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ebf
+Name           : DDR1_clus_standard-03
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-03
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 11 -icsv in_DDR1_clus_standard-03.csv -omae DDR1_clus_standard-03.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:19
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 11 -icsv in_DDR1_clus_standard-03.csv -omae DDR1_clus_standard-03.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 10 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-03.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      11   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_11'
+      12   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_12'
+      13   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_13'
+      14   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_14'
+      15   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_15'
+
+# of processed structures in "DDR1_clus_standard-03.maegz" : 14
+# of dropped structures in "DDR1_clus_standard-03-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 36.434 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-04
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ec0
+Name           : DDR1_clus_standard-04
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-04
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 16 -icsv in_DDR1_clus_standard-04.csv -omae DDR1_clus_standard-04.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:21
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 16 -icsv in_DDR1_clus_standard-04.csv -omae DDR1_clus_standard-04.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 15 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-04.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      16   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_16'
+      17   1/0     1/0     1/0     1/0     1/0     4/0     4/0     4/0     4/0   'lig_17'
+      18   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_18'
+      19   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_19'
+      20   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_20'
+
+# of processed structures in "DDR1_clus_standard-04.maegz" : 9
+# of dropped structures in "DDR1_clus_standard-04-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 15.518 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-05
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ec2
+Name           : DDR1_clus_standard-05
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-05
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 21 -icsv in_DDR1_clus_standard-05.csv -omae DDR1_clus_standard-05.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:22
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 21 -icsv in_DDR1_clus_standard-05.csv -omae DDR1_clus_standard-05.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 20 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-05.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      21   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_21'
+      22   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_22'
+      23   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_23'
+      24   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_24'
+      25   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_25'
+
+# of processed structures in "DDR1_clus_standard-05.maegz" : 10
+# of dropped structures in "DDR1_clus_standard-05-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 13.601 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-06
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ec4
+Name           : DDR1_clus_standard-06
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-06
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 26 -icsv in_DDR1_clus_standard-06.csv -omae DDR1_clus_standard-06.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:24
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 26 -icsv in_DDR1_clus_standard-06.csv -omae DDR1_clus_standard-06.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 25 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-06.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      26   1/0     1/0     1/0     1/0     1/0     4/0     8/0     8/0     8/0   'lig_26'
+      27   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_27'
+      28   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_28'
+      29   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_29'
+      30   1/0     1/0     1/0     1/0     1/0     4/0     4/0     4/0     4/0   'lig_30'
+
+# of processed structures in "DDR1_clus_standard-06.maegz" : 15
+# of dropped structures in "DDR1_clus_standard-06-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 15.990 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-07
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ec5
+Name           : DDR1_clus_standard-07
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-07
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 31 -icsv in_DDR1_clus_standard-07.csv -omae DDR1_clus_standard-07.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:25
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 31 -icsv in_DDR1_clus_standard-07.csv -omae DDR1_clus_standard-07.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 30 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-07.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      31   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_31'
+      32   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_32'
+      33   1/0     1/0     1/0     1/0     1/0     2/0     3/0     3/0     3/0   'lig_33'
+      34   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_34'
+      35   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_35'
+
+# of processed structures in "DDR1_clus_standard-07.maegz" : 13
+# of dropped structures in "DDR1_clus_standard-07-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 24.433 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-08
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ec7
+Name           : DDR1_clus_standard-08
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-08
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 36 -icsv in_DDR1_clus_standard-08.csv -omae DDR1_clus_standard-08.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:27
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 36 -icsv in_DDR1_clus_standard-08.csv -omae DDR1_clus_standard-08.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 35 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-08.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      36   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_36'
+      37   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_37'
+      38   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_38'
+      39   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_39'
+      40   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_40'
+
+# of processed structures in "DDR1_clus_standard-08.maegz" : 10
+# of dropped structures in "DDR1_clus_standard-08-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 16.930 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-09
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21ec8
+Name           : DDR1_clus_standard-09
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-09
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 41 -icsv in_DDR1_clus_standard-09.csv -omae DDR1_clus_standard-09.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:28
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 41 -icsv in_DDR1_clus_standard-09.csv -omae DDR1_clus_standard-09.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 40 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-09.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      41   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_41'
+      42   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_42'
+      43   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_43'
+      44   1/0     1/0     1/0     1/0     1/0     3/0     3/0     3/0     3/0   'lig_44'
+      45   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_45'
+
+# of processed structures in "DDR1_clus_standard-09.maegz" : 9
+# of dropped structures in "DDR1_clus_standard-09-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 15.888 seconds
+--------------------------------------------------------------------------------
+SUBJOB: DDR1_clus_standard-10
+
+
+--------------------------------------------------------------------------------
+JobId          : finestation-0-65a21eca
+Name           : DDR1_clus_standard-10
+Program        : LigPrep
+Version        : 2023-2 build 122
+Host           : finestation
+Dir            : /home/hoo/tmp/hoo/DDR1_clus_standard
+HostEntry      : localhost
+JobHost        : finestation
+JobDir         : /home/hoo/tmp/hoo/DDR1_clus_standard-10
+JobSchrodinger : /opt/schrodinger2023-2
+Commandline    : /opt/schrodinger2023-2/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 46 -icsv in_DDR1_clus_standard-10.csv -omae DDR1_clus_standard-10.maegz -HOST localhost
+StartTime      : 2024-01-13-13:25:30
+--------------------------------------------------------------------------------
+LigPrep (version 66122). Copyright Schrodinger, LLC. All rights reserved.
+
+LigPrep command:
+$SCHRODINGER/ligprep -ma 500 -bff 16 -epik -s 32 -orig_file DDR1_clus_standard.csv -orig_file_index 46 -icsv in_DDR1_clus_standard-10.csv -omae DDR1_clus_standard-10.maegz
+
+Processing steps:
+$DO.smiconvert_in -orig_file_index 45 -orig_file DDR1_clus_standard.csv -max_atom 500 in_DDR1_clus_standard-10.csv
+$DO.sdstereoexpander -add_hydrogens -max_output 32 -max_generated 1024 <infile.mae> <outfile.mae>
+$DO.htreat -t All-None -a all -s -l 500 <infile.mae> <outfile.mae>
+$DO.desalter <infile.mae> <outfile.mae>
+$DO.neutralizer -m 500 <infile.mae> <outfile.mae>
+$DO.guard <infile.mae> <outfile.mae>
+$DO.epik.py -ph 7.0 -tn 8 -ma 500 -imae <infile.mae> -omae <outfile.mae>
+$DO.stereoizer -label_specified_chiralities -n 32 <infile.mae> <outfile.mae>
+$DO.cgx -optimize -ffld 16 -epsilon 10.0 <infile.mae> <outfile.mae>
+$DO.filterstereo -max_stereo 32 <infile.mae> <outfile.mae>
+
+DO=$SCHRODINGER/run python3 -m schrodinger.application.macromodel.packages.ligprep3
+
+# counts of output and dropped structures after processing steps
+# index  sdstex  htreat  desalt  neutra   guard   epik   stereo    cgx   filter  title
+      46   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_46'
+      47   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_47'
+      48   1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0     1/0   'lig_48'
+      49   1/0     1/0     1/0     1/0     1/0     2/0     2/0     2/0     2/0   'lig_49'
+      50   1/0     1/0     1/0     1/0     1/0     5/0     5/0     5/0     5/0   'lig_50'
+
+# of processed structures in "DDR1_clus_standard-10.maegz" : 11
+# of dropped structures in "DDR1_clus_standard-10-dropped.csv" : 0
+
+backend run time: 0 hours 0 minutes 18.514 seconds
+--------------------------------------------------------------------------------
+
+# of processed structures in "DDR1_clus_standard-out.maegz" : 114
+# of dropped structures in "DDR1_clus_standard-dropped.csv" : 0
+
+total run time: 0 hours 0 minutes 44.084 seconds
