@@ -27,6 +27,7 @@ conda install openpyxl -c conda-forge
 conda install scipy -c conda-forge
 conda install scikit-learn==1.3.2 -c conda-forge
 conda install openbabel -c conda-forge
+conda install pandas -c conda-forge
 ```
 
 ![image](https://github.com/shenzheyuan2020/EvaluationMaster/assets/73147896/a7afc64f-7edf-48a5-8186-448cde45ed01)
