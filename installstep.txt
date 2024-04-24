@@ -1,7 +1,8 @@
 conda create -n VM python=3.9
 conda active VM
 conda install pyqt
-pip install PyQt_Fluent_Widgets-1.4.6-py3-none-any.whl
+'''pip install PyQt_Fluent_Widgets-1.4.6-py3-none-any.whl'''
+pip install "PyQt-Fluent-Widgets[full]" -i https://pypi.org/simple/
 pip install qdarkstyle
 conda install numpy -c conda-forge
 conda install vina -c conda-forge
