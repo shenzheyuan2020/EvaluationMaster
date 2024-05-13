@@ -30,8 +30,10 @@ conda install scikit-learn==1.3.2 -c conda-forge
 conda install openbabel -c conda-forge
 conda install pandas -c conda-forge
 ```
+![image](https://github.com/shenzheyuan2020/EvaluationMaster/assets/73147896/283104e4-b812-4c51-bb4c-e520116ca0ac)
 
-![图片1](https://github.com/shenzheyuan2020/EvaluationMaster/assets/73147896/cb0ba3e5-7620-4733-b8dc-0dbf21337d8e)
+![image](https://github.com/shenzheyuan2020/EvaluationMaster/assets/73147896/e1cf75a5-0499-480f-bc80-addfab20a919)
+
 
 ## SupportSoftware could be download here
 - KarmaDock github link  ——  https://github.com/schrojunzhang/KarmaDock
