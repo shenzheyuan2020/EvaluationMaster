@@ -47,14 +47,12 @@ conda install pandas -c conda-forge
 ## Details
     mkdir Support_software
     cd Support_software
-  
-  ###For mgltools(20240521):
+    #For mgltools(20240521):
     mkdir mgltools
     cd mgltools
     wget https://ccsb.scripps.edu/mgltools/download/491/
     tar -zxvf mgltools_x86_64Linux2_1.5.7p1.tar.gz
-
-  ###For LeDock:
+    #For LeDock:
     mkdir Ledock
     cd Ledock
     wget http://www.lephar.com/download/ledock_linux_x86
