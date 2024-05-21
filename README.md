@@ -66,5 +66,8 @@ conda install pandas -c conda-forge
 
     #For AutodockGPU
     git clone https://github.com/ccsb-scripps/AutoDock-GPU
+    
     cd AutoDock-GPU
+    export GPU_INCLUDE_PATH=/usr/local/cuda/include 
+    export GPU_LIBRARY_PATH=/usr/local/cuda/lib64 
     make DEVICE=GPU NUMWI=64
