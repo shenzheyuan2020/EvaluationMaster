@@ -12,6 +12,7 @@ from ..common.style_sheet import StyleSheet
 from .SoftGUI.ligdownGUI import InputligdownDialogs
 from .SoftGUI.ligprepUI import LigprepDialog
 from .SoftGUI.prodownGUI import InputprodownDialogs
+from .SoftGUI.deeppocket_GUI import DeeppocketDialog
 from .SoftGUI.ligclusGUI import InputclusDialogs
 from ..common.signal_bus import signalBus
 from .SoftGUI.lig3DforGlideGUI import Input3DligGDialogs
@@ -160,23 +161,11 @@ class HomeInterface(ScrollArea):
         Tabbedplace=os.getcwd() + "/images/controls/Button11.png"
         ADCplace=os.getcwd() + "/images/controls/Button13.png"
         basicInputView = SampleCardView(
-            self.tr("Downloading Part"), self.view)
-        basicInputView.addSampleCard(
-
-            # icon=":/gallery/images/controls/Button.png",
-            icon=icoplace,
-            title="Ligand Download",
-            content=self.tr(
-                "This button streamlines the extraction and analysis of bioactive compound data from ChEMBL."),
-            routeKey="basicInputInterface",  # Ensure this matches with the intended routeKey
-            index=0  # Ensure this matches with the intended index
-        )
-        self.vBoxLayout.addWidget(basicInputView)
-        
+            self.tr("Protein Preparation Part"), self.view)
 
         basicInputView.addSampleCard(
             icon=proicoplace ,
-            title="Protein Download",
+            title="Protein_Download",
             content=self.tr("This Button streamlines the extraction and analysis of Protein structure data from RCSB_PDB."),
             routeKey="basicInputInterface",
             index=1
@@ -250,12 +239,26 @@ class HomeInterface(ScrollArea):
         # )
         self.vBoxLayout.addWidget(basicInputView)
 
+
+
         # date time samples
         dateTimeView = SampleCardView(self.tr('Molecules Handle'), self.view)
 
         dateTimeView.addSampleCard(
+
+            # icon=":/gallery/images/controls/Button.png",
+            icon=icoplace,
+            title="Ligand_Download_and_Preparation",
+            content=self.tr(
+                "This button streamlines the extraction and analysis of bioactive compound data from ChEMBL."),
+            routeKey="dateTimeInterface",  # Ensure this matches with the intended routeKey
+            index=0  # Ensure this matches with the intended index
+        )
+
+
+        dateTimeView.addSampleCard(
             icon=LigClusplace,
-            title="LigClus",
+            title="Lig_Clus",
             content=self.tr(
                 "This Button control the ligands clus function"),
             routeKey="dateTimeInterface",
@@ -264,7 +267,7 @@ class HomeInterface(ScrollArea):
 
         dateTimeView.addSampleCard(
             icon=Decoyplace,
-            title="Decoy_generation",
+            title="Decoy_Generation",
             content=self.tr("The function was used to generate decoys."),
             routeKey="dateTimeInterface",
             index=13
@@ -614,12 +617,16 @@ class HomeInterface(ScrollArea):
 
 
     def on_sample_card_clicked(self, routeKey, index):
-        if routeKey == "basicInputInterface" and index == 0:  # Adjust these conditions as necessary
+        if routeKey == "dateTimeInterface" and index == 0:  # Adjust these conditions as necessary
             self.open_inputligdown_dialog()
         if routeKey == "basicInputInterface" and index == 1:  # Adjust these conditions as necessary
             self.open_inputprodown_dialog()
+
+
         if routeKey == "basicInputInterface" and index == 2:  # Adjust these conditions as necessary
-            self.open_inputprodown_dialog()
+            self.DeeppocketDialog_dialog()
+
+            
         if routeKey == "dateTimeInterface" and index == 10:  # Adjust these conditions as necessary
             self.open_inputclus_dialog()
         if routeKey == "dateTimeInterface" and index == 11:  # Adjust these conditions as necessary
@@ -648,8 +655,10 @@ class HomeInterface(ScrollArea):
         dialog = LigprepDialog(self)
         dialog.show()
 
-
-
+    def DeeppocketDialog_dialog(self):
+        dialog = DeeppocketDialog(self)
+        dialog.show()
+        
     def open_inputprodown_dialog(self):
         dialog = InputprodownDialogs(self)
         dialog.show()

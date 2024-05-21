@@ -155,7 +155,7 @@ class HomeInterface2(ScrollArea):
         layoutView = SampleCardView(self.tr('Evaluation_part'), self.view)
         layoutView.addSampleCard(
             icon=Vinaplace,
-            title="Vina_Evaluation",
+            title="Vina",
             content=self.tr(
                 "A button to call the vina function."),
             routeKey="layoutInterface",
@@ -164,7 +164,7 @@ class HomeInterface2(ScrollArea):
 
         layoutView.addSampleCard(
             icon=KarmaDockplace,
-            title="KarmaDock_Evaluation",
+            title="KarmaDock",
             content=self.tr(
                 "A button to call the KarmaDock function."),
             routeKey="layoutInterface",
@@ -173,7 +173,7 @@ class HomeInterface2(ScrollArea):
 
         layoutView.addSampleCard(
             icon=Ledockplace,
-            title="LeDock_Evaluation",
+            title="LeDock",
             content=self.tr(
                 "A button to call the leDock function."),
             routeKey="layoutInterface",
@@ -194,7 +194,7 @@ class HomeInterface2(ScrollArea):
 
         layoutView.addSampleCard(
             icon=AutodockGPUplace,
-            title="AutodockGPU_Evaluation",
+            title="AutodockGPU",
             content=self.tr(
                 "A button to call the AutoDockGPU function."),
             routeKey="layoutInterface",
@@ -236,11 +236,11 @@ class HomeInterface2(ScrollArea):
 
         materialView.addSampleCard(
             icon=virtualscreeningplace,
-            title="VirtualScreening",
+            title="Virtual_Screening",
             content=self.tr(
                 "A button to call the VirtualScreening function."),
             routeKey="materialInterface",
-            index=24
+            index=25
         )
         self.vBoxLayout.addWidget(materialView)
 
