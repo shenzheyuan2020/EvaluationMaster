@@ -39,6 +39,23 @@ conda install pandas -c conda-forge
 - KarmaDock github link  ——  https://github.com/schrojunzhang/KarmaDock
 - AutoDock-GPU github link ——  https://github.com/ccsb-scripps/AutoDock-GPU
 - LeDock download link  ——  http://www.lephar.com/download.htm
-- mgltools download link  —— https://ccsb.scripps.edu/mgltools/downloads/
+- mgltools download link  —— https://ccsb.scripps.edu/mgltools/downloads/ 
 - DeepCoy github link  ——  https://github.com/fimrie/DeepCoy
 - DeepPocket github link  ——    https://github.com/devalab/DeepPocket
+
+
+## Details
+    mkdir Support_software
+    cd Support_software
+  
+  ###For mgltools(20240521):
+    mkdir mgltools
+    cd mgltools
+    wget https://ccsb.scripps.edu/mgltools/download/491/
+    tar -zxvf mgltools_x86_64Linux2_1.5.7p1.tar.gz
+
+  ###For LeDock:
+    mkdir Ledock
+    cd Ledock
+    wget http://www.lephar.com/download/ledock_linux_x86
+    
