@@ -29,6 +29,12 @@ conda install scipy -c conda-forge
 conda install scikit-learn==1.3.2 -c conda-forge
 conda install openbabel -c conda-forge
 conda install pandas -c conda-forge
+conda install prody -c conda-forge
+conda install wandb -c conda-forge
+conda install scikit-image -c conda-forge
+pip install molgrid
+
+
 ```
 ![image](https://github.com/shenzheyuan2020/EvaluationMaster/assets/73147896/283104e4-b812-4c51-bb4c-e520116ca0ac)
 
@@ -71,3 +77,11 @@ conda install pandas -c conda-forge
     export GPU_INCLUDE_PATH=/usr/local/cuda/include 
     export GPU_LIBRARY_PATH=/usr/local/cuda/lib64 
     make DEVICE=GPU NUMWI=64
+
+    #For Deeppocket
+    git clone https://github.com/Discngine/fpocket.git
+    cd fpocket
+    make
+    sudo make install
+
+    
