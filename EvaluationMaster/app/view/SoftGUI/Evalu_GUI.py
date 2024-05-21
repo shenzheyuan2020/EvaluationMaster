@@ -92,7 +92,7 @@ class ScriptThreadledock(QThread):
     def run(self):
         self.started.emit()
         current_path = os.getcwd()
-        script_path = current_path + "/app/Script/DockingScript/Ledock.py"
+        script_path = current_path + "/app/Script/DockingScript/LeDock.py"
         subprocess.call([f"python", script_path, self.total_threads, self.csv_file, self.lig_path, self.save_path, self.ledock_path])
         self.finished.emit(self.csv_file)  # Emit with parameters
 
@@ -162,7 +162,7 @@ class basicdialogs(QDialog):
 
         # 创建勾选框
         self.chkAutodockGPU = QCheckBox("Run AutodockGPU", self)
-        self.chkLedock = QCheckBox("Run Ledock", self)
+        self.chkLeDock = QCheckBox("Run LeDock", self)
         self.chkAutodockVina = QCheckBox("Run AutodockVina", self)
         self.chkKarmaodock = QCheckBox("Run Karmadock", self)
 
@@ -211,7 +211,7 @@ class basicdialogs(QDialog):
         mainLayout.addWidget(rightWidget)
         # 将勾选框添加到布局中
         leftLayout.addWidget(self.chkAutodockGPU)
-        leftLayout.addWidget(self.chkLedock)
+        leftLayout.addWidget(self.chkLeDock)
         leftLayout.addWidget(self.chkAutodockVina)
         leftLayout.addWidget(self.chkKarmaodock)
 
@@ -358,8 +358,8 @@ class ledockdialogs(QDialog):
         # ledock_path input
         self.ledockFileEdit = QLineEdit(self)
         self.ledockFileEdit.setReadOnly(True)
-        self.ledockFileButton = QPushButton("Choose Ledock Executable path", self)
-        self.ledockFileButton.clicked.connect(self.chooseLedockFile)
+        self.ledockFileButton = QPushButton("Choose LeDock Executable path", self)
+        self.ledockFileButton.clicked.connect(self.chooseLeDockFile)
         leftLayout.addWidget(QLabel("ledock_path"))
         leftLayout.addWidget(self.ledockFileEdit)
         leftLayout.addWidget(self.ledockFileButton)
@@ -393,8 +393,8 @@ class ledockdialogs(QDialog):
         directory = QFileDialog.getExistingDirectory(self, "Choose Ligand File path")
         if directory:
             self.ligFileEdit.setText(directory)
-    def chooseLedockFile(self):
-        directory = QFileDialog.getExistingDirectory(self, "Choose Ledockpath")
+    def chooseLeDockFile(self):
+        directory = QFileDialog.getExistingDirectory(self, "Choose LeDockpath")
         if directory:
             self.ledockFileEdit.setText(directory)
 
@@ -685,7 +685,7 @@ class TabbedGUI(QMainWindow):
         # 创建每个工具的标签页
         self.tabs.addTab(self.createTab('Basic settings'), 'Basic settings')
         self.tabs.addTab(self.createTab('AutodockGPU'), 'AutodockGPU')
-        self.tabs.addTab(self.createTab('Ledock'), 'Ledock')
+        self.tabs.addTab(self.createTab('LeDock'), 'LeDock')
         self.tabs.addTab(self.createTab('AutodockVina'), 'AutodockVina')
         self.tabs.addTab(self.createTab('Karmadock'), 'Karmadock')
 
@@ -739,14 +739,14 @@ class TabbedGUI(QMainWindow):
             threadADGPU = ScriptThreadadgpu(csv_file, lig_path, mgl_tools_path, gpu_file, save_path, gpu_num, nrun)
             self.enqueueThread(threadADGPU)
 
-        # 检查 Ledock 是否被选中
-        if self.basicdialogs.chkLedock.isChecked():
+        # 检查 LeDock 是否被选中
+        if self.basicdialogs.chkLeDock.isChecked():
             total_threads = self.ledockDialog.total_threadsEdit.text()
             lig_path = self.ledockDialog.ligFileEdit.text()
             ledock_path = self.ledockDialog.ledockFileEdit.text()
-            # 创建 Ledock 线程并加入队列
-            threadLedock = ScriptThreadledock(total_threads, csv_file, lig_path, save_path, ledock_path)
-            self.enqueueThread(threadLedock)
+            # 创建 LeDock 线程并加入队列
+            threadLeDock = ScriptThreadledock(total_threads, csv_file, lig_path, save_path, ledock_path)
+            self.enqueueThread(threadLeDock)
 
         # 检查 AutodockVina 是否被选中
         if self.basicdialogs.chkAutodockVina.isChecked():
@@ -836,7 +836,7 @@ class TabbedGUI(QMainWindow):
         elif tool_name == "AutodockGPU":
             self.AutodockGPUDialog = autodockgpudialogs()
             layout.addWidget(self.AutodockGPUDialog)
-        elif tool_name == "Ledock":
+        elif tool_name == "LeDock":
             self.ledockDialog = ledockdialogs()
             layout.addWidget(self.ledockDialog)
         elif tool_name == "AutodockVina":

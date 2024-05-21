@@ -45,26 +45,26 @@ class basicdialogs(QDialog):
 
         # For Stage1 - 已存在的代码
         self.cmbStage1 = QComboBox(self)
-        self.cmbStage1.addItems(["AutodockGPU", "Ledock", "AutodockVina", "Glide"])
+        self.cmbStage1.addItems(["AutodockGPU", "LeDock", "AutodockVina", "KarmaDock"])
 
 
         # For Stage2
         self.cmbStage2 = QComboBox(self)
-        self.cmbStage2.addItems(["AutodockGPU", "Ledock", "AutodockVina", "Glide"])
+        self.cmbStage2.addItems(["AutodockGPU", "LeDock", "AutodockVina", "KarmaDock"])
         self.numInputStage2 = QLineEdit(self)
 
 
 
         # For Stage3
         self.cmbStage3 = QComboBox(self)
-        self.cmbStage3.addItems(["AutodockGPU", "Ledock", "AutodockVina", "Glide"])
+        self.cmbStage3.addItems(["AutodockGPU", "LeDock", "AutodockVina", "KarmaDock"])
         self.numInputStage3 = QLineEdit(self)
 
 
         
         # For Stage4
         self.cmbStage4 = QComboBox(self)
-        self.cmbStage4.addItems(["AutodockGPU", "Ledock", "AutodockVina", "Glide"])
+        self.cmbStage4.addItems(["AutodockGPU", "LeDock", "AutodockVina", "KarmaDock"])
         self.numInputStage4 = QLineEdit(self)
 
 
@@ -262,8 +262,8 @@ class ledockdialogs(QDialog):
         # ledock_path input
         self.ledockFileEdit = QLineEdit(self)
         self.ledockFileEdit.setReadOnly(True)
-        self.ledockFileButton = QPushButton("Choose Ledock Executable path", self)
-        self.ledockFileButton.clicked.connect(self.chooseLedockFile)
+        self.ledockFileButton = QPushButton("Choose LeDock Executable path", self)
+        self.ledockFileButton.clicked.connect(self.chooseLeDockFile)
         leftLayout.addWidget(QLabel("ledock_path"))
         leftLayout.addWidget(self.ledockFileEdit)
         leftLayout.addWidget(self.ledockFileButton)
@@ -297,8 +297,8 @@ class ledockdialogs(QDialog):
         directory = QFileDialog.getExistingDirectory(self, "Choose Ligand File path")
         if directory:
             self.ligFileEdit.setText(directory)
-    def chooseLedockFile(self):
-        directory = QFileDialog.getExistingDirectory(self, "Choose Ledockpath")
+    def chooseLeDockFile(self):
+        directory = QFileDialog.getExistingDirectory(self, "Choose LeDockpath")
         if directory:
             self.ledockFileEdit.setText(directory)
 
@@ -364,6 +364,97 @@ class vinadialogs(QDialog):
 
 
 
+# class glidedialogs(QDialog):
+#     def __init__(self, parent=None):
+#         super().__init__(parent, Qt.FramelessWindowHint | Qt.WindowSystemMenuHint)
+#         self.setWindowOpacity(1)
+#         self.initUI()
+
+#     def initUI(self):
+#         # Main layout
+#         mainLayout = QHBoxLayout(self)
+
+#         # Left layout (Input area)
+#         leftLayout = QVBoxLayout()
+
+#         # UI elements for schro_dir
+#         self.schroDirEdit = QLineEdit(self)
+#         self.schroDirButton = QPushButton("Choose Schrodir Directory", self)
+#         self.schroDirButton.clicked.connect(self.chooseSchroDir)
+#         leftLayout.addWidget(QLabel("Schrodinger Directory"))
+#         leftLayout.addWidget(self.schroDirEdit)
+#         leftLayout.addWidget(self.schroDirButton)
+
+#         # UI elements for mm_sahre_dir
+#         self.mmShareDirEdit = QLineEdit(self)
+#         self.mmShareDirButton = QPushButton("Choose MMshare Directory", self)
+#         self.mmShareDirButton.clicked.connect(self.chooseMMshareDir)
+#         leftLayout.addWidget(QLabel("MMshare Directory"))
+#         leftLayout.addWidget(self.mmShareDirEdit)
+#         leftLayout.addWidget(self.mmShareDirButton)
+
+#         # UI elements for KarmaDock_mode
+#         self.glideModeComboBox = QComboBox(self)
+#         self.glideModeComboBox.addItems(["SP", "XP"])
+#         leftLayout.addWidget(QLabel("KarmaDock Mode"))
+#         leftLayout.addWidget(self.glideModeComboBox)
+
+
+#         # UI elements for threads_num
+#         self.threadsNumEdit = QLineEdit(self)
+#         self.threadsNumEdit.setPlaceholderText("Enter threads number")
+#         leftLayout.addWidget(QLabel("Threads Number"))
+#         leftLayout.addWidget(self.threadsNumEdit)                                               
+      
+#         # 左侧容器
+#         leftWidget = QWidget()
+#         leftWidget.setLayout(leftLayout)
+
+#         # 右侧布局（动画区）
+#         rightLayout = QVBoxLayout()
+#         self.animationLabel = QLabel(self)
+#         current_path = os.getcwd()
+#         movie_dir = current_path + "/images/loading.gif"
+#         self.animationMovie = QMovie(movie_dir)  # 动画路径
+#         self.animationLabel.setMovie(self.animationMovie)
+#         rightLayout.addWidget(self.animationLabel)
+
+#         # 右侧容器
+#         rightWidget = QWidget()
+#         rightWidget.setLayout(rightLayout)
+
+#         # 将左右两侧添加到主布局
+#         mainLayout.addWidget(leftWidget)
+#         mainLayout.addWidget(rightWidget)
+
+#         # 设置窗口的初始大小
+#         self.setFixedSize(800, 400)  # 可以根据需要调整尺寸
+
+
+#     def chooseLigFilePath(self):
+#         file_name, _ = QFileDialog.getOpenFileName(self, "Choose Ligand File", "", "All Files (*)")
+#         if file_name:
+#             self.ligFilePathEdit.setText(file_name)
+
+#     def chooseSchroDir(self):
+#         directory = QFileDialog.getExistingDirectory(self, "Choose Schrodinger Directory")
+#         if directory:
+#             self.schroDirEdit.setText(directory)
+
+#     def chooseMMshareDir(self):
+#         directory = QFileDialog.getExistingDirectory(self, "Choose MMshare Directory")
+#         if directory:
+#             self.mmShareDirEdit.setText(directory)
+
+
+
+
+
+
+
+
+
+
 class glidedialogs(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent, Qt.FramelessWindowHint | Qt.WindowSystemMenuHint)
@@ -379,31 +470,31 @@ class glidedialogs(QDialog):
 
         # UI elements for schro_dir
         self.schroDirEdit = QLineEdit(self)
-        self.schroDirButton = QPushButton("Choose Schrodir Directory", self)
+        self.schroDirButton = QPushButton("Choose KarmaDock Directory", self)
         self.schroDirButton.clicked.connect(self.chooseSchroDir)
-        leftLayout.addWidget(QLabel("Schrodinger Directory"))
+        leftLayout.addWidget(QLabel("KarmaDock Directory"))
         leftLayout.addWidget(self.schroDirEdit)
         leftLayout.addWidget(self.schroDirButton)
 
-        # UI elements for mm_sahre_dir
-        self.mmShareDirEdit = QLineEdit(self)
-        self.mmShareDirButton = QPushButton("Choose MMshare Directory", self)
-        self.mmShareDirButton.clicked.connect(self.chooseMMshareDir)
-        leftLayout.addWidget(QLabel("MMshare Directory"))
-        leftLayout.addWidget(self.mmShareDirEdit)
-        leftLayout.addWidget(self.mmShareDirButton)
+        # # UI elements for mm_sahre_dir
+        # self.mmShareDirEdit = QLineEdit(self)
+        # self.mmShareDirButton = QPushButton("Choose MMshare Directory", self)
+        # self.mmShareDirButton.clicked.connect(self.chooseMMshareDir)
+        # leftLayout.addWidget(QLabel("MMshare Directory"))
+        # leftLayout.addWidget(self.mmShareDirEdit)
+        # leftLayout.addWidget(self.mmShareDirButton)
 
-        # UI elements for Glide_mode
-        self.glideModeComboBox = QComboBox(self)
-        self.glideModeComboBox.addItems(["SP", "XP"])
-        leftLayout.addWidget(QLabel("Glide Mode"))
-        leftLayout.addWidget(self.glideModeComboBox)
+        # # UI elements for KarmaDock_mode
+        # self.glideModeComboBox = QComboBox(self)
+        # self.glideModeComboBox.addItems(["SP", "XP"])
+        # leftLayout.addWidget(QLabel("KarmaDock Mode"))
+        # leftLayout.addWidget(self.glideModeComboBox)
 
 
         # UI elements for threads_num
         self.threadsNumEdit = QLineEdit(self)
-        self.threadsNumEdit.setPlaceholderText("Enter threads number")
-        leftLayout.addWidget(QLabel("Threads Number"))
+        self.threadsNumEdit.setPlaceholderText("Enter Score Threshold")
+        leftLayout.addWidget(QLabel("Threshold"))
         leftLayout.addWidget(self.threadsNumEdit)                                               
       
         # 左侧容器
@@ -431,20 +522,24 @@ class glidedialogs(QDialog):
         self.setFixedSize(800, 400)  # 可以根据需要调整尺寸
 
 
-    def chooseLigFilePath(self):
-        file_name, _ = QFileDialog.getOpenFileName(self, "Choose Ligand File", "", "All Files (*)")
-        if file_name:
-            self.ligFilePathEdit.setText(file_name)
+    # def chooseLigFilePath(self):
+    #     file_name, _ = QFileDialog.getOpenFileName(self, "Choose Ligand File", "", "All Files (*)")
+    #     if file_name:
+    #         self.ligFilePathEdit.setText(file_name)
 
     def chooseSchroDir(self):
         directory = QFileDialog.getExistingDirectory(self, "Choose Schrodinger Directory")
         if directory:
             self.schroDirEdit.setText(directory)
 
-    def chooseMMshareDir(self):
-        directory = QFileDialog.getExistingDirectory(self, "Choose MMshare Directory")
-        if directory:
-            self.mmShareDirEdit.setText(directory)
+    # def chooseMMshareDir(self):
+    #     directory = QFileDialog.getExistingDirectory(self, "Choose MMshare Directory")
+    #     if directory:
+    #         self.mmShareDirEdit.setText(directory)
+
+
+
+
 
 
 class TabbedGUI2(QMainWindow):
@@ -487,9 +582,9 @@ class TabbedGUI2(QMainWindow):
         # 创建每个工具的标签页
         self.tabs.addTab(self.createTab('Basic settings'), 'Basic settings')
         self.tabs.addTab(self.createTab('AutodockGPU'), 'AutodockGPU')
-        self.tabs.addTab(self.createTab('Ledock'), 'LeDock')
+        self.tabs.addTab(self.createTab('LeDock'), 'LeDock')
         self.tabs.addTab(self.createTab('AutodockVina'), 'AutodockVina')
-        self.tabs.addTab(self.createTab('Glide'), 'KarmaDock')
+        self.tabs.addTab(self.createTab('KarmaDock'), 'KarmaDock')
 
         # 添加一个关闭按钮，并将其放置在窗口底部中央
         self.btnClose = QPushButton('Close', self)
@@ -597,7 +692,7 @@ class TabbedGUI2(QMainWindow):
                     n_run = self.AutodockGPUDialog.nRunEdit.text()
                     threadInstance = ScriptThreadadgpu(csv_file, ligand_csv_file, lig_path, mgl_tools_path, gpu_file, save_path, gpu_num, n_run, index, preserve_num)
 
-                elif selectedTool == "Ledock":
+                elif selectedTool == "LeDock":
                     total_threads = self.ledockDialog.total_threadsEdit.text()
                     ledock_path = self.ledockDialog.ledockFileEdit.text()
                     threadInstance = ScriptThreadledock(total_threads, csv_file, ligand_csv_file, lig_path, save_path, ledock_path, index, preserve_num)
@@ -606,13 +701,19 @@ class TabbedGUI2(QMainWindow):
                     tool_path = self.vinadialogs.MGLToolsDirEdit.text()
                     threadInstance = ScriptThreadvina(csv_file, ligand_csv_file, lig_path, tool_path, save_path, index, preserve_num)
 
-                elif selectedTool == "Glide":
-
+                # elif selectedTool == "KarmaDock":
+                #     schro_dir = self.glideDialog.schroDirEdit.text()
+                #     mm_share_dir = self.glideDialog.mmShareDirEdit.text()
+                #     glide_mode = self.glideDialog.glideModeComboBox.currentText()
+                #     threads_num = self.glideDialog.threadsNumEdit.text()
+                #     threadInstance = ScriptThreadglide(csv_file, ligand_csv_file ,lig_path, schro_dir, mm_share_dir, save_path, glide_mode, threads_num, index, preserve_num)
+                elif selectedTool == "KarmaDock":
                     schro_dir = self.glideDialog.schroDirEdit.text()
-                    mm_share_dir = self.glideDialog.mmShareDirEdit.text()
-                    glide_mode = self.glideDialog.glideModeComboBox.currentText()
+                    # mm_share_dir = self.glideDialog.mmShareDirEdit.text()
+                    # glide_mode = self.glideDialog.glideModeComboBox.currentText()
                     threads_num = self.glideDialog.threadsNumEdit.text()
-                    threadInstance = ScriptThreadglide(csv_file, ligand_csv_file ,lig_path, schro_dir, mm_share_dir, save_path, glide_mode, threads_num, index, preserve_num)
+                    file_path = os.path.dirname(csv_file)
+                    threadInstance = ScriptThreadglide(schro_dir, csv_file, file_path, ligand_csv_file, save_path, threads_num,  index, preserve_num)
                 self.enqueueThread(threadInstance)
 
         # Begin executing the first thread if none are currently running
@@ -638,9 +739,16 @@ class TabbedGUI2(QMainWindow):
         self.thread.finished.connect(self.on_script_finish)  # Connect to the slot
         self.thread.start()
 
-    def run_glide_script(self, csv_file_path, lig_file, schro_dir, mm_sahre_dir, save_dir, Glide_mode, threads_num):
+    # def run_glide_script(self, csv_file_path, lig_file, schro_dir, mm_sahre_dir, save_dir, KarmaDock_mode, threads_num):
+    #     # Create and start the ScriptThread with the collected parameters
+    #     self.thread = ScriptThreadglide(csv_file_path, lig_file, schro_dir, mm_sahre_dir, save_dir, KarmaDock_mode, threads_num)
+    #     self.thread.started.connect(self.on_script_start)
+    #     self.thread.finished.connect(self.on_script_finish)  # Connect to the slot
+    #     self.thread.start()
+
+    def run_glide_script(self, schro_dir, csv_file, file_path, ligand_csv_file, save_path,threads_num,):
         # Create and start the ScriptThread with the collected parameters
-        self.thread = ScriptThreadglide(csv_file_path, lig_file, schro_dir, mm_sahre_dir, save_dir, Glide_mode, threads_num)
+        self.thread = ScriptThreadglide(schro_dir, csv_file, file_path, ligand_csv_file,save_path,threads_num)
         self.thread.started.connect(self.on_script_start)
         self.thread.finished.connect(self.on_script_finish)  # Connect to the slot
         self.thread.start()
@@ -670,14 +778,14 @@ class TabbedGUI2(QMainWindow):
         elif tool_name == "AutodockGPU":
             self.AutodockGPUDialog = autodockgpudialogs()
             layout.addWidget(self.AutodockGPUDialog)
-        elif tool_name == "Ledock":
+        elif tool_name == "LeDock":
             self.ledockDialog = ledockdialogs()
             layout.addWidget(self.ledockDialog)
         elif tool_name == "AutodockVina": 
             self.vinadialogs = vinadialogs()
             layout.addWidget(self.vinadialogs)
-        elif tool_name == "Glide":
-            # 对于 Glide 标签，显示 glidedialogs 界面
+        elif tool_name == "KarmaDock":
+            # 对于 KarmaDock 标签，显示 glidedialogs 界面
             self.glideDialog = glidedialogs()
             layout.addWidget(self.glideDialog)
 

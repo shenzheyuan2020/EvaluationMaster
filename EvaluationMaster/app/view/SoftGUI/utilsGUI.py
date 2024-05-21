@@ -150,19 +150,61 @@ class ScriptThreadvina(QThread):
         subprocess.call([f"python", script_path2, self.csv_file, self.lig_path, self.tool_path, self.save_path])
         self.finished.emit(self.csv_file)  # Emit with parameters
 
+# class ScriptThreadglide(QThread):
+#     started = pyqtSignal()
+#     finished = pyqtSignal(str)
+
+#     def __init__(self, csv_file_path, ligand_csv_file, lig_file, schro_dir, mm_sahre_dir, save_dir, Glide_mode,threads_num, index, preserve_num):
+#         super().__init__()
+#         self.csv_file_path = csv_file_path
+#         self.ligand_csv_file = ligand_csv_file
+#         self.lig_file = lig_file
+#         self.schro_dir = schro_dir
+#         self.mm_sahre_dir = mm_sahre_dir
+#         self.save_dir = save_dir
+#         self.Glide_mode = Glide_mode
+#         self.threads_num = threads_num
+#         self.index = index
+#         self.preserve_num = preserve_num
+#         # if index > 1:  # 当在第2、3、4阶段时
+#         #     temp_csv_file = f"{save_dir}/stage{index-1}/results.csv"
+#         #     self.save_path = f"{save_dir}/stage{index}/"
+#         #     df = pd.read_csv(temp_csv_file)  # 读取前一阶段的CSV文件或初始ligand_csv_file
+#         #     num_rows_to_keep = int(len(df) * (preserve_num / 100.0))
+#         #     df_subset = df.head(num_rows_to_keep)
+#         #     df_subset.to_csv(temp_csv_file, index=False)  # 保存截断后的数据到新的CSV文件
+#         #     ligand_csv_file = temp_csv_file  # 更新ligand_csv_file为包含截断数据的新文件路径
+
+
+#     def run(self):
+#         self.started.emit()
+#         if self.index > 1:  # 当在第2、3、4阶段时
+#             temp_csv_file = f"{self.save_dir}/stage{self.index-1}/results.csv"
+#             self.save_dir = f"{self.save_dir}/stage{self.index}/"
+#             df = pd.read_csv(temp_csv_file)  # 读取前一阶段的CSV文件或初始ligand_csv_file
+#             num_rows_to_keep = int(len(df) * (self.preserve_num / 100.0))
+#             df_subset = df.head(num_rows_to_keep)
+#             df_subset.to_csv(temp_csv_file, index=False)  # 保存截断后的数据到新的CSV文件
+#             self.ligand_csv_file = temp_csv_file  # 更新ligand_csv_file为包含截断数据的新文件路径
+#         current_path = os.getcwd()
+#         script_path = current_path + "/app/Script/ScreeningScript/ligprepG.py"
+#         subprocess.call([f"python", script_path, self.threads_num, self.ligand_csv_file, self.lig_file, self.schro_dir])
+#         self.lig_file = self.lig_file + "/ligands.maegz"
+#         script_path2 = current_path + "/app/Script/ScreeningScript/GlideG.py"
+#         subprocess.call([f"python", script_path2, self.csv_file_path, self.lig_file, self.schro_dir, self.mm_sahre_dir, self.save_dir, self.Glide_mode, self.threads_num])
+#         self.finished.emit(self.csv_file_path)  # Emit with parameters
+
 class ScriptThreadglide(QThread):
     started = pyqtSignal()
     finished = pyqtSignal(str)
 
-    def __init__(self, csv_file_path, ligand_csv_file, lig_file, schro_dir, mm_sahre_dir, save_dir, Glide_mode,threads_num, index, preserve_num):
+    def __init__(self, schro_dir, csv_file, file_path, ligand_csv_file, save_path,threads_num, index, preserve_num):
         super().__init__()
-        self.csv_file_path = csv_file_path
-        self.ligand_csv_file = ligand_csv_file
-        self.lig_file = lig_file
         self.schro_dir = schro_dir
-        self.mm_sahre_dir = mm_sahre_dir
-        self.save_dir = save_dir
-        self.Glide_mode = Glide_mode
+        self.csv_file_path = csv_file
+        self.file_path = file_path
+        self.ligand_csv_file = ligand_csv_file
+        self.save_dir = save_path
         self.threads_num = threads_num
         self.index = index
         self.preserve_num = preserve_num
@@ -187,12 +229,16 @@ class ScriptThreadglide(QThread):
             df_subset.to_csv(temp_csv_file, index=False)  # 保存截断后的数据到新的CSV文件
             self.ligand_csv_file = temp_csv_file  # 更新ligand_csv_file为包含截断数据的新文件路径
         current_path = os.getcwd()
-        script_path = current_path + "/app/Script/ScreeningScript/ligprepG.py"
-        subprocess.call([f"python", script_path, self.threads_num, self.ligand_csv_file, self.lig_file, self.schro_dir])
-        self.lig_file = self.lig_file + "/ligands.maegz"
-        script_path2 = current_path + "/app/Script/ScreeningScript/GlideG.py"
-        subprocess.call([f"python", script_path2, self.csv_file_path, self.lig_file, self.schro_dir, self.mm_sahre_dir, self.save_dir, self.Glide_mode, self.threads_num])
+        # script_path = current_path + "/app/Script/ScreeningScript/ligprepG.py"
+        # subprocess.call([f"python", script_path, self.threads_num, self.ligand_csv_file, self.lig_file, self.schro_dir])
+        # self.lig_file = self.lig_file + "/ligands.maegz"
+        # script_path2 = current_path + "/app/Script/ScreeningScript/GlideG.py"
+        # subprocess.call([f"python", script_path2, self.schro_dir, self.lig_file, self.schro_dir, self.mm_sahre_dir, self.save_dir, self.Glide_mode, self.threads_num])
+        script_path = current_path + "/app/Script/ScreeningScript/Karmadock.py"
+        subprocess.call ([f"{self.schro_dir}/Env/karmadock_env/bin/python", "-u", script_path, self.schro_dir, self.csv_file_path, self.file_path, self.ligand_csv_file, self.save_dir, self.threads_num])
         self.finished.emit(self.csv_file_path)  # Emit with parameters
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
