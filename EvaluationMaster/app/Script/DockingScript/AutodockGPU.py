@@ -146,7 +146,7 @@ def process_autodockgpu_csv(csv_file_path, lig_path, mgltool_path, Autdock_GPU_f
         next(reader, None)  # Skip the header row
         for row in reader:
             mol_name, x, y, z = row[0], float(row[1]), float(row[2]), float(row[3])
-            mol_name_path = mol_name + "_Autodock_GPU"
+            mol_name_path = mol_name + "_AutodockGPU"
             os.makedirs(f"{save_path}/{mol_name_path}", exist_ok=True)
             shutil.copy(f"{base_dir}/{mol_name}.pdb",f"{save_path}/{mol_name_path}/{mol_name}.pdb")
             process_molecule(mol_name, (x, y, z), f"{save_path}/{mol_name_path}", lig_path,  mgltool_path,  Autdock_GPU_file, GPU_num, n_run)
