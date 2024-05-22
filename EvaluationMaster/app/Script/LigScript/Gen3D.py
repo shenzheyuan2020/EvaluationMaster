@@ -298,7 +298,7 @@ def main():
     csv_file_path = sys.argv[2]
     save_dir = sys.argv[3]
     mgltool_path = sys.argv[4]
-    num_threads = int(sys.argv[5]) if len(sys.argv) == 6 else 12
+    num_threads = int(sys.argv[5]) if len(sys.argv) == 6 else 1
 
     generate_3d_structures(csv_file_path, lig_start_name, save_dir, mgltool_path, num_threads)
 
