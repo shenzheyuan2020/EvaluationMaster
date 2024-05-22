@@ -5,7 +5,7 @@ EvaluationMaster is a tool focused on chemical data processing and simulation, d
 ## Features
 
 - **Data Processing**: Supports multiple data formats, providing powerful data processing capabilities.
-- **Chemical Simulation**: Integrates multiple cheminformatics tools to perform complex chemical simulations.
+- **Bacth Docking and Evaluation**: Integrates different docking tools to perform complex batch docking evaluation under multiple protein structures.
 - **User Interface**: Offers a PyQt-based graphical user interface, easy to operate and visualize data.
 
 ## Installation Steps
