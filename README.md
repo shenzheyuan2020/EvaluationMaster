@@ -89,4 +89,7 @@ pip install molgrid
     make
     sudo make install
 
-    
+    #For Deepcoy
+    mkdir Deepcoy
+    cd Deepcoy
+    The Deepcoy env could be download here and you can also create it by yourself but save under current directory https://drive.google.com/file/d/1ey0FyDV_FeaWv4BE8_66pwuuxVM8MMD-/view?usp=sharing
