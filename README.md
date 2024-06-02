@@ -69,7 +69,12 @@ pip install molgrid
     
     #For KarmaDock
     git clone https://github.com/schrojunzhang/KarmaDock
-
+    cd KaramaDock
+    mkdir Env
+    cd Env
+    wget https://zenodo.org/record/7788732/files/karmadock_env.tar.gz?download=1
+    tar -zxvf karmadock_env.tar.gz
+    
     #For AutodockGPU
     git clone https://github.com/ccsb-scripps/AutoDock-GPU
     
