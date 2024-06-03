@@ -8,6 +8,9 @@ EvaluationMaster is a tool focused on chemical data processing and simulation, d
 - **Bacth Docking and Evaluation**: Integrates different docking tools to perform complex batch docking evaluation under multiple protein structures.
 - **User Interface**: Offers a PyQt-based graphical user interface, easy to operate and visualize data.
 
+## Updated notice （20240603）
+We discovered that Karmadock's code had been updated since our initial tests, particularly regarding execution scripts. To ensure smooth execution for the user, it was necessary to replace one of these scripts
+
 ## Installation Steps
 
 This project depends on multiple Python libraries and tools. Here are the installation steps:
