@@ -9,7 +9,7 @@ EvaluationMaster is a tool focused on chemical data processing and simulation, d
 - **User Interface**: Offers a PyQt-based graphical user interface, easy to operate and visualize data.
 
 ## Updated notice （20240603）
-We discovered that Karmadock's code had been updated since our initial tests, particularly regarding execution scripts. To ensure smooth execution for the user, it was necessary to replace one of these scripts
+We discovered that Karmadock's code had been updated since our initial tests, particularly regarding execution scripts. To ensure smooth execution for the user. It is necessary to replace a script in the substitude folder with one in the same path as karmadock.
 
 ## Installation Steps
 
