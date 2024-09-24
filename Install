@@ -38,6 +38,7 @@ conda install prody -c conda-forge -y
 conda install wandb -c conda-forge -y
 conda install scikit-image -c conda-forge -y
 pip install molgrid
+pip install tqdm
 
 # 创建Support_software目录并进入
 echo "Creating Support_software directory..."
