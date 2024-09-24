@@ -37,6 +37,7 @@ conda install pandas -c conda-forge -y
 conda install prody -c conda-forge -y
 conda install wandb -c conda-forge -y
 conda install scikit-image -c conda-forge -y
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
 pip install molgrid
 pip install tqdm
 
