@@ -87,6 +87,10 @@ cd fpocket
 make
 sudo make install
 cd ..
+git clone https://github.com/devalab/DeepPocket.git
+wget https://zenodo.org/records/13833813/files/first_model_fold1_best_test_auc_85001.pth.tar?download=1
+wget https://zenodo.org/records/13833813/files/seg0_best_test_IOU_91.pth.tar?download=1
+cd ..
 
 # DeepCoy安装
 echo "Installing DeepCoy..."
