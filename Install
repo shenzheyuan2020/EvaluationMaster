@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# 确保Conda已初始化
+if ! command -v conda &> /dev/null
+then
+    echo "Conda not found. Please install Anaconda or Miniconda first."
+    exit
+fi
+
+# 初始化conda环境
+eval "$(conda shell.bash hook)" # 初始化conda shell命令
+
 # 定义安装目录
 INSTALL_DIR=$(pwd)
 
@@ -11,7 +21,8 @@ conda activate VM
 # 安装PyQt和其他依赖项
 echo "Installing dependencies..."
 conda install pyqt -y
-pip install PyQt_Fluent_Widgets-1.4.6-py3-none-any.whl
+wget https://files.pythonhosted.org/packages/b6/06/291866f91c573cc637bedbdd008e6a8ca506b589e61de1540ca265cfe7bd/PyQt_Fluent_Widgets-1.6.5-py3-none-any.whl
+pip install PyQt_Fluent_Widgets-1.6.5-py3-none-any.whl
 pip install qdarkstyle
 conda install numpy -c conda-forge -y
 conda install vina -c conda-forge -y
@@ -80,7 +91,7 @@ echo "Installing DeepCoy..."
 git clone https://github.com/fimrie/DeepCoy.git
 cd DeepCoy
 mkdir -p DeepCoy
-
+wget https://zenodo.org/records/13831241/files/Deep_Coy_env.tar.gz?download=1
 cd ..
 # 下载DeepCoy预训练模型
 echo "Downloading DeepCoy pretrained models..."
@@ -93,7 +104,13 @@ echo "Adding installation path to .bashrc and setting EVALUATIONMASTER..."
 
 echo "export EVALUATIONMASTER=$INSTALL_DIR" >> ~/.bashrc
 
+# 更新当前终端会话中的环境变量
+export EVALUATIONMASTER=$INSTALL_DIR
+
 # 使.bashrc立即生效
 source ~/.bashrc
 
 echo "Installation completed! EVALUATIONMASTER is set to $EVALUATIONMASTER"
+
+
+cp $EVALUATIONMASTER/Substitude/KarmaDock/dataset/graph_obj.py  $EVALUATIONMASTER/Support_software/KarmaDock/dataset/graph_obj.py
