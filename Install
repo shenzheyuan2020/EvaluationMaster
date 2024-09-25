@@ -60,6 +60,8 @@ echo "Installing LeDock..."
 mkdir -p Ledock
 cd Ledock
 wget http://www.lephar.com/download/ledock_linux_x86
+wget https://www.lephar.com/download/dok2mol2.cpp
+g++ -std=c++11 dok2mol2.cpp -o dok2mol2
 cd ..
 
 # KarmaDock安装
