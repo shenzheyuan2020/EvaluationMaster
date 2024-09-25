@@ -40,6 +40,7 @@ conda install scikit-image -c conda-forge -y
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
 pip install molgrid
 pip install tqdm
+pip install seaborn
 
 # 创建Support_software目录并进入
 echo "Creating Support_software directory..."
