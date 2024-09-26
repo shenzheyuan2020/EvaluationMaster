@@ -28,7 +28,7 @@ class BannerWidget(QWidget):
         self.setFixedHeight(336)
      
         self.vBoxLayout = QVBoxLayout(self)
-        self.galleryLabel = QLabel('Deeplight', self)
+        self.galleryLabel = QLabel('EvaluationMaster', self)
         current_dir = os.getcwd()
         img_dir = current_dir + "/images/header1.png"
         self.banner = QPixmap(img_dir)
@@ -152,7 +152,7 @@ class HomeInterface2(ScrollArea):
         Analplace=os.getcwd() + "/images/controls/Button16.png"
 
         # layout samples
-        layoutView = SampleCardView(self.tr('Evaluation_part'), self.view)
+        layoutView = SampleCardView(self.tr('Docking Tools For Evaluation'), self.view)
         layoutView.addSampleCard(
             icon=Vinaplace,
             title="Vina",
