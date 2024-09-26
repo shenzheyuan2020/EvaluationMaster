@@ -100,12 +100,10 @@ cd ..
 echo "Installing DeepCoy..."
 git clone https://github.com/fimrie/DeepCoy.git
 cd DeepCoy
-mkdir -p DeepCoy
-cd DeepCoy
 wget https://zenodo.org/records/13831241/files/Deep_Coy_env.tar.gz
 tar -zxvf Deep_Coy_env.tar.gz
 cd ..
-cd ..
+
 # 下载DeepCoy预训练模型
 echo "Downloading DeepCoy pretrained models..."
 wget https://opig.stats.ox.ac.uk/data/downloads/DeepCoy_pretrained_models.tar.gz
