@@ -45,17 +45,17 @@ class autodockgpudialogs(QDialog):
 
          # csv_file input (file chooser for CSV files)
         self.csvFileEdit = QLineEdit(self)
-        self.csvFileEdit.setReadOnly(True)
+        self.csvFileEdit.setPlaceholderText("Choose the csv file which contain your protein name and coordinates information")
         self.csvFileButton = QPushButton("Choose CSV File", self)
         self.csvFileButton.clicked.connect(self.chooseCsvFile)
-        leftLayout.addWidget(QLabel("csv_file"))
+        leftLayout.addWidget(QLabel("protein csv file"))
         leftLayout.addWidget(self.csvFileEdit)
         leftLayout.addWidget(self.csvFileButton)
         
         # lig_path input
         self.ligFileEdit = QLineEdit(self)
-        self.ligFileEdit.setReadOnly(True)
-        self.ligFileButton = QPushButton("Choose Ligand File", self)
+        self.ligFileEdit.setPlaceholderText("Choose the ligand file path (where you stored the prepared pdbqt file) for docking")
+        self.ligFileButton = QPushButton("Choose Ligand file path", self)
         self.ligFileButton.clicked.connect(self.chooseLigFile)
         leftLayout.addWidget(QLabel("lig_path"))
         leftLayout.addWidget(self.ligFileEdit)
@@ -63,7 +63,8 @@ class autodockgpudialogs(QDialog):
 
         # mgltool_path input
         self.mglToolPathEdit = QLineEdit(self)
-        self.mglToolPathEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.mglToolPathEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7")) 
         self.mglToolPathButton = QPushButton("Choose MGLTools Path", self)
         self.mglToolPathButton.clicked.connect(self.chooseMGLToolsPath)
         leftLayout.addWidget(QLabel("mgltool_path"))
@@ -72,7 +73,8 @@ class autodockgpudialogs(QDialog):
 
         # Autodock_GPU_file input
         self.gpuFileEdit = QLineEdit(self)
-        self.gpuFileEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.gpuFileEdit.setText(os.path.join(evaluation_master, "Support_software/AutoDock-GPU/bin/autodock_gpu_64wi")) 
         self.gpuFileButton = QPushButton("Choose AutoDock GPU File", self)
         self.gpuFileButton.clicked.connect(self.chooseGPUFile)
         leftLayout.addWidget(QLabel("Autodock_GPU_file"))
@@ -90,13 +92,13 @@ class autodockgpudialogs(QDialog):
 
         # GPU_num input
         self.gpuNumEdit = QLineEdit(self)
-        self.gpuNumEdit.setPlaceholderText("Enter GPU number")
+        self.gpuNumEdit.setPlaceholderText("Enter GPU number, recomanded 1")
         leftLayout.addWidget(QLabel("GPU_num"))
         leftLayout.addWidget(self.gpuNumEdit)
 
         # n_run input
         self.nRunEdit = QLineEdit(self)
-        self.nRunEdit.setPlaceholderText("Enter number of runs")
+        self.nRunEdit.setPlaceholderText("Enter number of runs, recomanded 10 ")
         leftLayout.addWidget(QLabel("n_run"))
         leftLayout.addWidget(self.nRunEdit)
 
@@ -131,7 +133,7 @@ class autodockgpudialogs(QDialog):
         mainLayout.addWidget(rightWidget)
 
         # 设置窗口的初始大小
-        self.setFixedSize(600, 400)  # 可以根据需要调整尺寸
+        self.setFixedSize(600, 600)  # 可以根据需要调整尺寸
 
         # 设置样式
         self.setStyleSheet("""

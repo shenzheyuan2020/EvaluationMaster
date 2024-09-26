@@ -71,7 +71,7 @@ class basicdialogs(QDialog):
 
         # 在类定义中添加新的元素
         self.ligandCsvFileEdit = QLineEdit(self)
-        self.ligandCsvFileEdit.setReadOnly(True)
+        self.ligandCsvFileEdit.setPlaceholderText("Choose ligand file (.csv) for screening")
         self.ligandCsvFileButton = QPushButton("Choose Ligand CSV File", self)
         self.ligandCsvFileButton.clicked.connect(self.chooseLigandCsvFile)
         # 添加新的配体CSV文件选择器
@@ -81,7 +81,7 @@ class basicdialogs(QDialog):
 
          # csv_file input (file chooser for CSV files)
         self.csvFileEdit = QLineEdit(self)
-        self.csvFileEdit.setReadOnly(True)
+        self.csvFileEdit.setPlaceholderText("Choose protein file (.csv) for screening")
         self.csvFileButton = QPushButton("Choose CSV File", self)
         self.csvFileButton.clicked.connect(self.chooseCsvFile)
         leftLayout.addWidget(QLabel("protein_csv_file"))
@@ -126,11 +126,14 @@ class basicdialogs(QDialog):
         leftLayout.addWidget(self.chkStage2)
         leftLayout.addWidget(self.cmbStage2)
         leftLayout.addWidget(self.numInputStage2)  # 添加Stage2数字输入
+        self.numInputStage2.setPlaceholderText("The percentage value is used to specify the reserved ligand ratio for this stage handle; for example, input 30 to reserve 30%.")
         leftLayout.addWidget(self.chkStage3)
         leftLayout.addWidget(self.cmbStage3)
 
         leftLayout.addWidget(self.numInputStage3)  # 添加Stage3数字输入
+        self.numInputStage3.setPlaceholderText("The percentage value is used to specify the reserved ligand ratio for this stage handle; for example, input 30 to reserve 30%.")
         leftLayout.addWidget(self.chkStage4)
+        self.numInputStage4.setPlaceholderText("The percentage value is used to specify the reserved ligand ratio for this stage handle; for example, input 30 to reserve 30%.")
         leftLayout.addWidget(self.cmbStage4)
         leftLayout.addWidget(self.numInputStage4)  # 添加Stage2数字输入
         # 设置窗口的初始大小
@@ -169,7 +172,8 @@ class autodockgpudialogs(QDialog):
 
         # mgltool_path input
         self.mglToolPathEdit = QLineEdit(self)
-        self.mglToolPathEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.mglToolPathEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7")) 
         self.mglToolPathButton = QPushButton("Choose MGLTools Path", self)
         self.mglToolPathButton.clicked.connect(self.chooseMGLToolsPath)
         leftLayout.addWidget(QLabel("mgltool_path"))
@@ -178,7 +182,8 @@ class autodockgpudialogs(QDialog):
 
         # Autodock_GPU_file input
         self.gpuFileEdit = QLineEdit(self)
-        self.gpuFileEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.gpuFileEdit.setText(os.path.join(evaluation_master, "Support_software/AutoDock-GPU/bin/autodock_gpu_64wi")) 
         self.gpuFileButton = QPushButton("Choose AutoDock GPU File", self)
         self.gpuFileButton.clicked.connect(self.chooseGPUFile)
         leftLayout.addWidget(QLabel("Autodock_GPU_file"))
@@ -261,7 +266,8 @@ class ledockdialogs(QDialog):
 
         # ledock_path input
         self.ledockFileEdit = QLineEdit(self)
-        self.ledockFileEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.ledockFileEdit.setText(os.path.join(evaluation_master, "Support_software/Ledock")) 
         self.ledockFileButton = QPushButton("Choose LeDock Executable path", self)
         self.ledockFileButton.clicked.connect(self.chooseLeDockFile)
         leftLayout.addWidget(QLabel("ledock_path"))
@@ -319,7 +325,8 @@ class vinadialogs(QDialog):
 
         # tool_path input
         self.MGLToolsDirEdit = QLineEdit(self)
-        self.MGLToolsDirEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.MGLToolsDirEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7")) 
         self.MGLToolsDirButton = QPushButton("Choose MGLTools Directory", self)
         self.MGLToolsDirButton.clicked.connect(self.chooseMGLToolsDir)
         leftLayout.addWidget(QLabel("tool_path"))
@@ -470,6 +477,8 @@ class glidedialogs(QDialog):
 
         # UI elements for schro_dir
         self.schroDirEdit = QLineEdit(self)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.schroDirEdit .setText(os.path.join(evaluation_master, "Support_software/KarmaDock/")) 
         self.schroDirButton = QPushButton("Choose KarmaDock Directory", self)
         self.schroDirButton.clicked.connect(self.chooseSchroDir)
         leftLayout.addWidget(QLabel("KarmaDock Directory"))

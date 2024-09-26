@@ -235,7 +235,7 @@ class ScriptThreadglide(QThread):
         # script_path2 = current_path + "/app/Script/ScreeningScript/GlideG.py"
         # subprocess.call([f"python", script_path2, self.schro_dir, self.lig_file, self.schro_dir, self.mm_sahre_dir, self.save_dir, self.Glide_mode, self.threads_num])
         script_path = current_path + "/app/Script/ScreeningScript/Karmadock.py"
-        subprocess.call ([f"{self.schro_dir}/Env/karmadock_env/bin/python", "-u", script_path, self.schro_dir, self.csv_file_path, self.file_path, self.ligand_csv_file, self.save_dir, self.threads_num])
+        subprocess.call ([f"{self.schro_dir}/Env/bin/python", "-u", script_path, self.schro_dir, self.csv_file_path, self.file_path, self.ligand_csv_file, self.save_dir, self.threads_num])
         self.finished.emit(self.csv_file_path)  # Emit with parameters
 
 

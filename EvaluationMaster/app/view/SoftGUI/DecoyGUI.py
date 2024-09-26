@@ -42,28 +42,29 @@ class decoydialogs(QDialog):
 
         # generate_number input
         self.generate_numberEdit = QLineEdit(self)
-        self.generate_numberEdit.setPlaceholderText("Enter generate number")
+        self.generate_numberEdit.setPlaceholderText("Enter generate number (recommended 100)")
         leftLayout.addWidget(QLabel("generate_number"))
         leftLayout.addWidget(self.generate_numberEdit)
 
         # valid_number input
         self.valid_numberEdit = QLineEdit(self)
-        self.valid_numberEdit.setPlaceholderText("Enter valid number")
+        self.valid_numberEdit.setPlaceholderText("Enter valid number  (recommended 50)")
         leftLayout.addWidget(QLabel("valid_number"))
         leftLayout.addWidget(self.valid_numberEdit)
 
         # csv_file input (changed to file chooser for CSV files)
         self.csvFileEdit = QLineEdit(self)
-        self.csvFileEdit.setReadOnly(True)
-        self.csvFileButton = QPushButton("Choose CSV File", self)
+        self.csvFileEdit.setPlaceholderText("choose ligand csv file for decoy generation")
+        self.csvFileButton = QPushButton("Choose csv File", self)
         self.csvFileButton.clicked.connect(self.chooseCsvFile)
-        leftLayout.addWidget(QLabel("csv_file"))
+        leftLayout.addWidget(QLabel("ligand_csv_file"))
         leftLayout.addWidget(self.csvFileEdit)
         leftLayout.addWidget(self.csvFileButton)
 
         # tool_path input
         self.DeepcoyDirEdit = QLineEdit(self)
-        self.DeepcoyDirEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.DeepcoyDirEdit.setText(os.path.join(evaluation_master, "Support_software/DeepCoy/"))
         self.DeepcoyDirButton = QPushButton("Choose Deepcoy Directory", self)
         self.DeepcoyDirButton.clicked.connect(self.chooseDeepcoyDir)
         leftLayout.addWidget(QLabel("tool_path"))

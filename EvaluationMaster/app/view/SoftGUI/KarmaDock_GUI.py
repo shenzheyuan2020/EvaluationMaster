@@ -33,7 +33,7 @@ class ScriptThread(QThread):
         current_path = os.getcwd()
         script_path = os.path.join(current_path, "app/Script/DockingScript/Karmadock.py")
         process = subprocess.Popen(
-            [f"{self.KarmaDock_dir}/Env/karmadock_env/bin/python", "-u", script_path, self.KarmaDock_dir, self.multi_protein_csv, self.multi_protein_dir, self.lig_csv, self.out_dir, str(self.score_threshold)],
+            [f"{self.KarmaDock_dir}/Env/bin/python", "-u", script_path, self.KarmaDock_dir, self.multi_protein_csv, self.multi_protein_dir, self.lig_csv, self.out_dir, str(self.score_threshold)],
             stdout=subprocess.PIPE,
             text=True)
         output, _ = process.communicate()
@@ -124,10 +124,11 @@ class KarmaDock_Dialog(QDialog):
 ###############################
     def setupLineEditWidgets(self):
         self.Line_pro_coor_file.setPlaceholderText("Coordinate file (.csv) path")
-        self.Line_ligand_path.setPlaceholderText("Choose ligand path (.csv)")
+        self.Line_ligand_path.setPlaceholderText("Choose ligand file (.csv)")
         self.Line_outdir.setPlaceholderText("Choose out dir")
-        self.Line_scorethread.setPlaceholderText("Set Score thread")
-        self.karmadock_dir.setPlaceholderText( "KarmaDock dir")
+        self.Line_scorethread.setPlaceholderText("Set Score thread (recomended 0 to show all your result)")
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.karmadock_dir.setText(os.path.join(evaluation_master, "Support_software/KarmaDock/")) 
         self.Line_protein_path.setPlaceholderText("Choose protein(.pdb) path")
 
     def setupConnections(self):
@@ -218,6 +219,7 @@ class KarmaDock_Dialog(QDialog):
         QMessageBox.information(self, "Script Finished", f"The KarmaDock script has completed. Output directory: {out_dir}")
 
         # 使用mol_name变量构建CSV文件路径
+        out_dir = os.path.join(out_dir,f"{mol_name}_KarmaDock")
         csv_file_path = os.path.join(out_dir, f"{mol_name}_score.csv")
         self.displayCSV(csv_file_path)
 

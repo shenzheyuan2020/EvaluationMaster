@@ -36,7 +36,7 @@ class ScriptKarmadockThread(QThread):
         current_path = os.getcwd()
         script_path = os.path.join(current_path, "app/Script/DockingScript/Karmadock.py")
         process = subprocess.Popen(
-            [f"{self.KarmaDock_dir}/Env/karmadock_env/bin/python", "-u", script_path, self.KarmaDock_dir, self.multi_protein_csv, self.multi_protein_dir, self.lig_csv, self.out_dir, str(self.score_threshold)],
+            [f"{self.KarmaDock_dir}/Env/bin/python", "-u", script_path, self.KarmaDock_dir, self.multi_protein_csv, self.multi_protein_dir, self.lig_csv, self.out_dir, str(self.score_threshold)],
             stdout=subprocess.PIPE,
             text=True)
         output, _ = process.communicate()
@@ -170,10 +170,10 @@ class basicdialogs(QDialog):
          # csv_file input (file chooser for CSV files)
         self.csvFileEdit = QLineEdit(self)
         self.csvFileEdit.setGeometry(QtCore.QRect(40, 340, 251, 25))
-        self.csvFileEdit.setReadOnly(True)
+        self.csvFileEdit.setPlaceholderText("Choose the csv file which contain your protein name and coordinates information")
         self.csvFileButton = QPushButton("Choose CSV File", self)
         self.csvFileButton.clicked.connect(self.chooseCsvFile)
-        leftLayout.addWidget(QLabel("csv_file"))
+        leftLayout.addWidget(QLabel("protein csv file"))
         leftLayout.addWidget(self.csvFileEdit)
         leftLayout.addWidget(self.csvFileButton)
         
@@ -246,8 +246,8 @@ class autodockgpudialogs(QDialog):
       
         # lig_path input
         self.ligFileEdit = QLineEdit(self)
-        self.ligFileEdit.setReadOnly(True)
-        self.ligFileButton = QPushButton("Choose Ligand File", self)
+        self.ligFileEdit.setPlaceholderText("Choose the ligand file path (where you stored the prepared pdbqt file) for docking")
+        self.ligFileButton = QPushButton("Choose Ligand file path", self)
         self.ligFileButton.clicked.connect(self.chooseLigFile)
         leftLayout.addWidget(QLabel("lig_path"))
         leftLayout.addWidget(self.ligFileEdit)
@@ -255,7 +255,8 @@ class autodockgpudialogs(QDialog):
 
         # mgltool_path input
         self.mglToolPathEdit = QLineEdit(self)
-        self.mglToolPathEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.mglToolPathEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7")) 
         self.mglToolPathButton = QPushButton("Choose MGLTools Path", self)
         self.mglToolPathButton.clicked.connect(self.chooseMGLToolsPath)
         leftLayout.addWidget(QLabel("mgltool_path"))
@@ -264,7 +265,8 @@ class autodockgpudialogs(QDialog):
 
         # Autodock_GPU_file input
         self.gpuFileEdit = QLineEdit(self)
-        self.gpuFileEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.gpuFileEdit.setText(os.path.join(evaluation_master, "Support_software/AutoDock-GPU/bin/autodock_gpu_64wi")) 
         self.gpuFileButton = QPushButton("Choose AutoDock GPU File", self)
         self.gpuFileButton.clicked.connect(self.chooseGPUFile)
         leftLayout.addWidget(QLabel("Autodock_GPU_file"))
@@ -273,13 +275,13 @@ class autodockgpudialogs(QDialog):
 
         # GPU_num input
         self.gpuNumEdit = QLineEdit(self)
-        self.gpuNumEdit.setPlaceholderText("Enter GPU number")
+        self.gpuNumEdit.setPlaceholderText("Enter the GPU number for your use (recomended 1)")
         leftLayout.addWidget(QLabel("GPU_num"))
         leftLayout.addWidget(self.gpuNumEdit)
 
         # n_run input
         self.nRunEdit = QLineEdit(self)
-        self.nRunEdit.setPlaceholderText("Enter number of runs")
+        self.nRunEdit.setPlaceholderText("Enter number of runs (recomended 100)")
         leftLayout.addWidget(QLabel("n_run"))
         leftLayout.addWidget(self.nRunEdit)
 
@@ -347,8 +349,8 @@ class ledockdialogs(QDialog):
         
         #lig_path input
         self.ligFileEdit = QLineEdit(self)
-        self.ligFileEdit.setReadOnly(True)
-        self.ligFileButton = QPushButton("Choose Ligand File path", self)
+        self.ligFileEdit.setPlaceholderText("Choose the ligand file path (where you stored the prepared mol2 file) for docking")
+        self.ligFileButton = QPushButton("Choose Ligand file path", self)
         self.ligFileButton.clicked.connect(self.chooseLigFile)
         leftLayout.addWidget(QLabel("lig_path"))
         leftLayout.addWidget(self.ligFileEdit)
@@ -357,8 +359,9 @@ class ledockdialogs(QDialog):
 
         # ledock_path input
         self.ledockFileEdit = QLineEdit(self)
-        self.ledockFileEdit.setReadOnly(True)
-        self.ledockFileButton = QPushButton("Choose LeDock Executable path", self)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.ledockFileEdit.setText(os.path.join(evaluation_master, "Support_software/Ledock")) 
+        self.ledockFileButton = QPushButton("Choose Ledock Executable path", self)
         self.ledockFileButton.clicked.connect(self.chooseLeDockFile)
         leftLayout.addWidget(QLabel("ledock_path"))
         leftLayout.addWidget(self.ledockFileEdit)
@@ -416,8 +419,8 @@ class vinadialogs(QDialog):
 
         #lig_path input
         self.ligFileEdit = QLineEdit(self)
-        self.ligFileEdit.setReadOnly(True)
-        self.ligFileButton = QPushButton("Choose Ligand File path", self)
+        self.ligFileEdit.setPlaceholderText("Choose the ligand file path (where you stored the prepared pdbqt file) for docking")
+        self.ligFileButton = QPushButton("Choose Ligand file path", self)
         self.ligFileButton.clicked.connect(self.chooseLigFile)
         leftLayout.addWidget(QLabel("lig_path"))
         leftLayout.addWidget(self.ligFileEdit)
@@ -425,8 +428,9 @@ class vinadialogs(QDialog):
 
         # tool_path input
         self.MGLToolsDirEdit = QLineEdit(self)
-        self.MGLToolsDirEdit.setReadOnly(True)
-        self.MGLToolsDirButton = QPushButton("Choose MGLTools Directory", self)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.MGLToolsDirEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7")) 
+        self.MGLToolsDirButton = QPushButton("Choose MGLTools Path", self)
         self.MGLToolsDirButton.clicked.connect(self.chooseMGLToolsDir)
         leftLayout.addWidget(QLabel("tool_path"))
         leftLayout.addWidget(self.MGLToolsDirEdit)
@@ -469,82 +473,6 @@ class vinadialogs(QDialog):
             self.ligFileEdit.setText(directory)
 
 
-
-# class glidedialogs(QDialog):
-#     def __init__(self, parent=None):
-#         super().__init__(parent, Qt.FramelessWindowHint | Qt.WindowSystemMenuHint)
-#         self.setWindowOpacity(1)
-#         self.initUI()
-
-#     def initUI(self):
-#         # Main layout
-#         mainLayout = QHBoxLayout(self)
-
-#         # Left layout (Input area)
-#         leftLayout = QVBoxLayout()
-
-#         # UI elements for lig_file
-#         self.ligFilePathEdit = QLineEdit(self)
-#         self.ligFilePathButton = QPushButton("Choose Ligand File", self)
-#         self.ligFilePathButton.clicked.connect(self.chooseLigFilePath)
-#         leftLayout.addWidget(QLabel("Ligand File"))
-#         leftLayout.addWidget(self.ligFilePathEdit)
-#         leftLayout.addWidget(self.ligFilePathButton)
-
-#         # UI elements for schro_dir
-#         self.schroDirEdit = QLineEdit(self)
-#         self.schroDirButton = QPushButton("Choose Schrodir Directory", self)
-#         self.schroDirButton.clicked.connect(self.chooseSchroDir)
-#         leftLayout.addWidget(QLabel("Schrodinger Directory"))
-#         leftLayout.addWidget(self.schroDirEdit)
-#         leftLayout.addWidget(self.schroDirButton)
-
-#         # UI elements for mm_sahre_dir
-#         self.mmShareDirEdit = QLineEdit(self)
-#         self.mmShareDirButton = QPushButton("Choose MMshare Directory", self)
-#         self.mmShareDirButton.clicked.connect(self.chooseMMshareDir)
-#         leftLayout.addWidget(QLabel("MMshare Directory"))
-#         leftLayout.addWidget(self.mmShareDirEdit)
-#         leftLayout.addWidget(self.mmShareDirButton)
-
-#         # UI elements for Glide_mode
-#         self.glideModeComboBox = QComboBox(self)
-#         self.glideModeComboBox.addItems(["SP", "XP"])
-#         leftLayout.addWidget(QLabel("Glide Mode"))
-#         leftLayout.addWidget(self.glideModeComboBox)
-
-
-#         # UI elements for threads_num
-#         self.threadsNumEdit = QLineEdit(self)
-#         self.threadsNumEdit.setPlaceholderText("Enter threads number")
-#         leftLayout.addWidget(QLabel("Threads Number"))
-#         leftLayout.addWidget(self.threadsNumEdit)                                               
-      
-#         # 左侧容器
-#         leftWidget = QWidget()
-#         leftWidget.setLayout(leftLayout)
-
-#         # 右侧布局（动画区）
-#         rightLayout = QVBoxLayout()
-#         self.animationLabel = QLabel(self)
-#         current_path = os.getcwd()
-#         movie_dir = current_path + "/images/loading.gif"
-#         self.animationMovie = QMovie(movie_dir)  # 动画路径
-#         self.animationLabel.setMovie(self.animationMovie)
-#         rightLayout.addWidget(self.animationLabel)
-
-#         # 右侧容器
-#         rightWidget = QWidget()
-#         rightWidget.setLayout(rightLayout)
-
-#         # 将左右两侧添加到主布局
-#         mainLayout.addWidget(leftWidget)
-#         mainLayout.addWidget(rightWidget)
-
-#         # 设置窗口的初始大小
-#         self.setFixedSize(800, 400)  # 可以根据需要调整尺寸
-
-
 class karmadockdialogs(QDialog):
     def __init__(self, parent=None):
         super(karmadockdialogs, self).__init__(parent)  # 保留parent参数以允许设置父窗口
@@ -559,16 +487,12 @@ class karmadockdialogs(QDialog):
         # Left layout (Input area)
         leftLayout = QVBoxLayout()
 
-#         # UI elements for lig_file
-#         self.ligFilePathEdit = QLineEdit(self)
-#         self.ligFilePathButton = QPushButton("Choose Ligand File", self)
-#         self.ligFilePathButton.clicked.connect(lambda: self.chooseFile(self.ligFilePathEdit, "Choose Ligand File", "CSV Files (*.csv)"))
-#         leftLayout.addWidget(QLabel("Ligand File"))
-#         leftLayout.addWidget(self.ligFilePathEdit)
-#         leftLayout.addWidget(self.ligFilePathButton)
 
         # UI elements for karmadock_dir
         self.karmadock_dir = QLineEdit(self)
+
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.karmadock_dir.setText(os.path.join(evaluation_master, "Support_software/KarmaDock/")) 
         self.Button_karmadockdir = QPushButton("KarmaDock dir", self)
         self.Button_karmadockdir.clicked.connect(self.choosekarmaDir)
         leftLayout.addWidget(QLabel("KarmaDock dir"))
@@ -576,23 +500,19 @@ class karmadockdialogs(QDialog):
         leftLayout.addWidget(self.Button_karmadockdir)
 
         self.Line_pro_coor_file = QLineEdit(self)
-        self.Button_pro_coor_file = QPushButton("Choose coordinate file", self)
+        self.Line_pro_coor_file.setPlaceholderText("Choose coordinate csv file")        
+        self.Button_pro_coor_file = QPushButton("Choose coordinate csv file", self)
         self.Button_pro_coor_file.clicked.connect(lambda: self.chooseFile(self.Line_pro_coor_file, "CSV Files (*.csv)"))
-        leftLayout.addWidget(QLabel("Choose protein coordinate file"))
+        leftLayout.addWidget(QLabel("Choose protein coordinate csv file"))
         leftLayout.addWidget(self.Line_pro_coor_file)
         leftLayout.addWidget(self.Button_pro_coor_file)
 
-        # self.Line_protein_path = QLineEdit(self)
-        # self.Button_protein = QPushButton("Choose protein path", self)
-        # self.Button_protein.clicked.connect(self.chooseproteinDir)
-        # leftLayout.addWidget(QLabel("Choose protein path"))
-        # leftLayout.addWidget(self.Line_protein_path)
-        # leftLayout.addWidget(self.Button_protein)
 
         self.Line_ligand_path = QLineEdit(self)
-        self.Button_ligand = QPushButton("Choose ligand path", self)
+        self.Line_ligand_path.setPlaceholderText("Choose ligand file (.csv) for docking")
+        self.Button_ligand = QPushButton("Choose ligand csv path", self)
         self.Button_ligand.clicked.connect(lambda: self.chooseFile(self.Line_ligand_path, "CSV Files (*.csv)"))
-        leftLayout.addWidget(QLabel("Choose ligand file"))
+        leftLayout.addWidget(QLabel("Choose ligand csv file"))
         leftLayout.addWidget(self.Line_ligand_path)
         leftLayout.addWidget(self.Button_ligand)
 

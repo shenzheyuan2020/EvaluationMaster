@@ -55,25 +55,27 @@ class vinadialogs(QDialog):
 
         # csv_file input (changed to file chooser for CSV files)
         self.csvFileEdit = QLineEdit(self)
-        self.csvFileEdit.setReadOnly(True)
+        self.csvFileEdit.setPlaceholderText("Choose the csv file which contain your protein name and coordinates information")
         self.csvFileButton = QPushButton("Choose CSV File", self)
         self.csvFileButton.clicked.connect(self.chooseCsvFile)
-        leftLayout.addWidget(QLabel("csv_file"))
+        leftLayout.addWidget(QLabel("protein csv file"))
         leftLayout.addWidget(self.csvFileEdit)
         leftLayout.addWidget(self.csvFileButton)
         
         #lig_path input
         self.ligFileEdit = QLineEdit(self)
-        self.ligFileEdit.setReadOnly(True)
-        self.ligFileButton = QPushButton("Choose Ligand File path", self)
+        self.ligFileEdit.setPlaceholderText("Choose the ligand file path (where you stored the prepared pdbqt file) for docking")
+        self.ligFileButton = QPushButton("Choose Ligand file path", self)
         self.ligFileButton.clicked.connect(self.chooseLigFile)
-        leftLayout.addWidget(QLabel("lig_path"))
+        leftLayout.addWidget(QLabel("Ligand file path"))
         leftLayout.addWidget(self.ligFileEdit)
         leftLayout.addWidget(self.ligFileButton)
 
         # tool_path input
         self.MGLToolsDirEdit = QLineEdit(self)
-        self.MGLToolsDirEdit.setReadOnly(True)
+        # self.MGLToolsDirEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.MGLToolsDirEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7")) 
         self.MGLToolsDirButton = QPushButton("Choose MGLTools Directory", self)
         self.MGLToolsDirButton.clicked.connect(self.chooseMGLToolsDir)
         leftLayout.addWidget(QLabel("tool_path"))
@@ -120,7 +122,7 @@ class vinadialogs(QDialog):
         mainLayout.addWidget(rightWidget)
 
         # 设置窗口的初始大小
-        self.setFixedSize(600, 400)  # 可以根据需要调整尺寸
+        self.setFixedSize(600, 500)  # 可以根据需要调整尺寸
 
         # 设置样式
         self.setStyleSheet("""

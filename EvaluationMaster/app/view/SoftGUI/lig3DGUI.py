@@ -48,10 +48,10 @@ class Input3DligDialogs(QDialog):
 
         # csv_file_path input
         self.inputFileEdit = QLineEdit(self)
-        self.inputFileEdit.setReadOnly(True)
+        self.inputFileEdit.setPlaceholderText("Enter ligand csv file")
         self.inputFileButton = QPushButton("Choose Input File", self)
         self.inputFileButton.clicked.connect(self.chooseInputFile)
-        leftLayout.addWidget(QLabel("csv_file_path"))
+        leftLayout.addWidget(QLabel("ligand_csv_file"))
         leftLayout.addWidget(self.inputFileEdit)
         leftLayout.addWidget(self.inputFileButton)
 
@@ -66,7 +66,9 @@ class Input3DligDialogs(QDialog):
 
         # mgltool_path input
         self.MGLTOOLDirEdit = QLineEdit(self)
-        self.MGLTOOLDirEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.MGLTOOLDirEdit.setText(os.path.join(evaluation_master, "Support_software/mgltools/mgltools_x86_64Linux2_1.5.7"))        
+        # self.MGLTOOLDirEdit.setReadOnly(True)
         self.MGLTOOLDirButton = QPushButton("Choose MGLTOOLS Directory", self)
         self.MGLTOOLDirButton.clicked.connect(self.chooseSchroDir)
         leftLayout.addWidget(QLabel("mgltool_path"))

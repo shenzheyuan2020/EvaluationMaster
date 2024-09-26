@@ -56,24 +56,24 @@ class ledockdialogs(QDialog):
 
         # input total_threads
         self.total_threadsEdit = QLineEdit(self)
-        self.total_threadsEdit.setPlaceholderText("Enter total threads")
+        self.total_threadsEdit.setPlaceholderText("Enter total threads (recommended your computer's threads)")
         leftLayout.addWidget(QLabel("total_threads"))
         leftLayout.addWidget(self.total_threadsEdit)
 
 
         # csv_file input (changed to file chooser for CSV files)
         self.csvFileEdit = QLineEdit(self)
-        self.csvFileEdit.setReadOnly(True)
+        self.csvFileEdit.setPlaceholderText("Choose the csv file which contain your protein name and coordinates information")
         self.csvFileButton = QPushButton("Choose CSV File", self)
         self.csvFileButton.clicked.connect(self.chooseCsvFile)
-        leftLayout.addWidget(QLabel("csv_file"))
+        leftLayout.addWidget(QLabel("protein csv file"))
         leftLayout.addWidget(self.csvFileEdit)
         leftLayout.addWidget(self.csvFileButton)
         
         #lig_path input
         self.ligFileEdit = QLineEdit(self)
-        self.ligFileEdit.setReadOnly(True)
-        self.ligFileButton = QPushButton("Choose Ligand File path", self)
+        self.ligFileEdit.setPlaceholderText("Choose the ligand file path (where you stored the prepared mol2 file) for docking")
+        self.ligFileButton = QPushButton("Choose Ligand file path", self)
         self.ligFileButton.clicked.connect(self.chooseLigFile)
         leftLayout.addWidget(QLabel("lig_path"))
         leftLayout.addWidget(self.ligFileEdit)
@@ -90,7 +90,8 @@ class ledockdialogs(QDialog):
 
         # ledock_path input
         self.ledockFileEdit = QLineEdit(self)
-        self.ledockFileEdit.setReadOnly(True)
+        evaluation_master = os.getenv('EVALUATIONMASTER', '')  # Get environment variable
+        self.ledockFileEdit.setText(os.path.join(evaluation_master, "Support_software/Ledock")) 
         self.ledockFileButton = QPushButton("Choose Ledock Executable path", self)
         self.ledockFileButton.clicked.connect(self.chooseLedockFile)
         leftLayout.addWidget(QLabel("ledock_path"))
@@ -129,7 +130,7 @@ class ledockdialogs(QDialog):
         mainLayout.addWidget(rightWidget)
 
         # 设置窗口的初始大小
-        self.setFixedSize(600, 400)  # 可以根据需要调整尺寸
+        self.setFixedSize(600, 500)  # 可以根据需要调整尺寸
 
         # 设置样式
         self.setStyleSheet("""

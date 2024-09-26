@@ -40,7 +40,7 @@ class InputclusDialogs(QDialog):
         leftLayout = QVBoxLayout()
         # Name input
         self.nameEdit = QLineEdit(self)
-        self.nameEdit.setPlaceholderText("Enter clus_num")
+        self.nameEdit.setPlaceholderText("Enter clus_num, recommended 50")
         leftLayout.addWidget(QLabel("clus_num"))
         leftLayout.addWidget(self.nameEdit)
 
@@ -53,7 +53,7 @@ class InputclusDialogs(QDialog):
 
         # Save_Place input
         self.savePlaceEdit = QLineEdit(self)
-        self.savePlaceEdit.setReadOnly(True)
+        self.savePlaceEdit.setPlaceholderText("Choose The Ligand csv file for clustering") 
         self.savePlaceButton = QPushButton("Choose handle_file", self)
         self.savePlaceButton.clicked.connect(self.chooseSavePlace)
         leftLayout.addWidget(QLabel("handle_file"))
