@@ -41,6 +41,7 @@ conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvi
 pip install molgrid
 pip install tqdm
 pip install seaborn
+sudo apt install autogrid
 
 # 创建Support_software目录并进入
 echo "Creating Support_software directory..."
