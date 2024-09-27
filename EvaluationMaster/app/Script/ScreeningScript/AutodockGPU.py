@@ -170,7 +170,7 @@ def process_molecule(mol_name, center, base_dir, lig_path,  mgltool_path, Autdoc
 
 def process_autodockgpu_csv(csv_file_path, lig_path, mgltool_path, Autdock_GPU_file, save_path, GPU_num, n_run):
     
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(GPU_num)
+    # os.environ['CUDA_VISIBLE_DEVICES'] = str(GPU_num)
     (base_dir, base_name) = os.path.split(csv_file_path)
     #current_path = os.getcwd()
     with open(csv_file_path, newline='') as csvfile:
@@ -195,7 +195,7 @@ def main():
     mgltool_path = sys.argv[3]
     Autdock_GPU_file = sys.argv[4]
     save_path = sys.argv[5]
-    GPU_num = int(sys.argv[6])-1
+    GPU_num = int(sys.argv[6])
     n_run = sys.argv[7]
     process_autodockgpu_csv(csv_file, lig_path, mgltool_path, Autdock_GPU_file, save_path, GPU_num, n_run)
 
