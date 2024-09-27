@@ -169,9 +169,9 @@ def main():
     proteins_dir = multi_protein_dir 
     data = pd.read_csv(multi_protein_csv)
     for index, row in data.iterrows():
-        protein_file = os.path.join(proteins_dir, row['mol name'] + '.pdb')
+        protein_file = os.path.join(proteins_dir, row['mol_name'] + '.pdb')
         pocket_center = np.array([row['x'], row['y'], row['z']], dtype=float)
-        mol_name = row['mol name']  
+        mol_name = row['mol_name']  
         print(f"Processing {mol_name}")
         target_center = pocket_center
         crystal_ligand_file = move_molecule_to_center_and_convert_to_mol2(out_dir, tuple(target_center))
