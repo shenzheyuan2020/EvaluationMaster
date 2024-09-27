@@ -42,6 +42,7 @@ pip install molgrid
 pip install tqdm
 pip install seaborn
 sudo apt install autogrid
+conda install -c conda-forge pymol-open-source -y
 
 # 创建Support_software目录并进入
 echo "Creating Support_software directory..."
