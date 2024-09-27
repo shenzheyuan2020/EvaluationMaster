@@ -21,6 +21,8 @@ def download_alphafold_pdb(uniprot_id, save_dir):
 def download_xray_pdb(pdb_id, save_dir):
     """Download X-ray PDB file from RCSB database given a PDB ID."""
     url = f'https://files.rcsb.org/download/{pdb_id}.pdb'
+
+    print (url)
     response = requests.get(url)
     if response.status_code == 200:
         os.makedirs(save_dir, exist_ok=True)
@@ -82,15 +84,17 @@ def main(uniprot_id, name, resolution_threshold, method_filter, save_path):
     
         for index, row in df.iterrows():
             pdb_id = row['PDB ID']
-            method = row['Method'].strip()
 
-            if method_filter.lower() == 'xray' and row['Resolution'] < resolution_threshold:
+            method = row['Method'].strip()
+            if method_filter.lower() == 'x-ray' and row['Resolution'] < resolution_threshold:
+
                 download_xray_pdb(pdb_id, os.path.join(save_path, f"{name}_pdb"))
             elif method_filter.lower() == 'nmr' and method.lower() == 'nmr':  
                 download_nmr_pdb(pdb_id, os.path.join(save_path, f"{name}_pdb"))
             # elif method_filter.lower() == 'alphafold':
             #     download_alphafold_pdb(uniprot_id, os.path.join(save_path, f"{name}_pdb"))
-                break
+            #     break
+            # print(f"Processing: PDB ID: {pdb_id}, Method: {method}, Resolution: {row['Resolution']}")
 
         download_alphafold_pdb(uniprot_id, os.path.join(save_path, f"{name}_pdb"))
 
