@@ -17,7 +17,7 @@ We discovered that Karmadock's code had been updated since our initial tests, pa
 
 ## Installation Steps
 You can just run ./Install to complete installation or you can follow the steps:
-'''
+```
 ### Installation Guide
 ### 1. Ensure Conda is Installed
 ### First, ensure that Anaconda or Miniconda is installed on your system. 
@@ -159,5 +159,4 @@ bash
 cp $EVALUATIONMASTER/Substitude/KarmaDock/dataset/graph_obj.py $EVALUATIONMASTER/Support_software/KarmaDock/dataset/graph_obj.py
 ### 15. Complete Installation
 ### After completing the above steps, the installation process is finished. You can now use the installed software.
-
-'''
+```
