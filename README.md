@@ -20,21 +20,21 @@ You can just run ./Install to complete installation or you can follow the steps:
 
 - Installation Guide
 - 1. Ensure Conda is Installed
-###First, ensure that Anaconda or Miniconda is installed on your system. 
+- First, ensure that Anaconda or Miniconda is installed on your system. 
 
-###2. Initialize Conda Environment
-###Run the following command in your terminal to initialize Conda shell commands:
+- 2. Initialize Conda Environment
+- Run the following command in your terminal to initialize Conda shell commands:
 
 bash
 eval "$(conda shell.bash hook)"
-###3. Create and Activate Conda Virtual Environment
-###Create a Conda virtual environment named "VM" with Python 3.9 and activate it:
+- 3. Create and Activate Conda Virtual Environment
+- Create a Conda virtual environment named "VM" with Python 3.9 and activate it:
 
 bash
 conda create -n VM python=3.9 -y
 conda activate VM
-###4. Install PyQt and Other Dependencies
-###While the virtual environment is activated, execute the following commands to install the required dependencies:
+- 4. Install PyQt and Other Dependencies
+- While the virtual environment is activated, execute the following commands to install the required dependencies:
 
 bash
 conda install pyqt -y
@@ -60,18 +60,18 @@ conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvi
 pip install molgrid
 pip install tqdm
 pip install seaborn
-###5. Install Autogrid
-###Execute the following command to install autogrid:
+- 5. Install Autogrid
+- Execute the following command to install autogrid:
 
 bash
 sudo apt install autogrid
-###6. Install PyMOL
-###Install the open-source version of PyMOL:
+- 6. Install PyMOL
+- Install the open-source version of PyMOL:
 
 bash
 conda install -c conda-forge pymol-open-source -y
-###7. Create Support_software Directory and Install MGLTools
-###Create the Support_software directory and navigate into it, then install MGLTools:
+- 7. Create Support_software Directory and Install MGLTools
+- Create the Support_software directory and navigate into it, then install MGLTools:
 
 bash
 mkdir -p Support_software
@@ -84,8 +84,8 @@ tar -zxvf mgltools_x86_64Linux2_1.5.7p1.tar.gz
 cd mgltools_x86_64Linux2_1.5.7
 bash install.sh
 cd ../..
-###8. Install LeDock
-###Create the Ledock directory and install LeDock:
+- 8. Install LeDock
+- Create the Ledock directory and install LeDock:
 
 bash
 mkdir -p Ledock
@@ -96,8 +96,8 @@ g++ -std=c++11 dok2mol2.cpp -o dok2mol2
 mv ledock_linux_x86 ledock
 chmod 777 ledock
 cd ..
-###9. Install KarmaDock
-###Clone the KarmaDock repository and install its environment:
+- 9. Install KarmaDock
+- Clone the KarmaDock repository and install its environment:
 
 bash
 git clone https://github.com/schrojunzhang/KarmaDock
@@ -107,8 +107,8 @@ cd Env
 wget https://zenodo.org/record/7788732/files/karmadock_env.tar.gz?download=1 -O karmadock_env.tar.gz
 tar -zxvf karmadock_env.tar.gz
 cd ../..
-###10. Install AutoDock-GPU
-###Clone the AutoDock-GPU repository and compile it:
+- 10. Install AutoDock-GPU
+- Clone the AutoDock-GPU repository and compile it:
 
 bash
 git clone https://github.com/ccsb-scripps/AutoDock-GPU
@@ -117,8 +117,8 @@ export GPU_INCLUDE_PATH=/usr/local/cuda/include
 export GPU_LIBRARY_PATH=/usr/local/cuda/lib64
 make DEVICE=OCLGPU NUMWI=64
 cd ..
-###11. Install Deeppocket
-###Clone the fpocket and DeepPocket repositories and install dependencies:
+- 11. Install Deeppocket
+- Clone the fpocket and DeepPocket repositories and install dependencies:
 
 bash
 git clone https://github.com/Discngine/fpocket.git
@@ -131,8 +131,8 @@ cd DeepPocket
 wget https://zenodo.org/records/13833813/files/first_model_fold1_best_test_auc_85001.pth.tar
 wget https://zenodo.org/records/13833813/files/seg0_best_test_IOU_91.pth.tar
 cd ..
-###12. Install DeepCoy
-###Clone the DeepCoy repository and install dependencies:
+- 12. Install DeepCoy
+- Clone the DeepCoy repository and install dependencies:
 
 bash
 git clone https://github.com/fimrie/DeepCoy.git
@@ -146,16 +146,16 @@ bash
 wget https://opig.stats.ox.ac.uk/data/downloads/DeepCoy_pretrained_models.tar.gz
 tar -zxvf DeepCoy_pretrained_models.tar.gz
 cd ..
-###13. Set EVALUATIONMASTER Environment Variable
-###Add the installation path to .bashrc and set the EVALUATIONMASTER environment variable:
+- 13. Set EVALUATIONMASTER Environment Variable
+- Add the installation path to .bashrc and set the EVALUATIONMASTER environment variable:
 
 bash
 echo "export EVALUATIONMASTER=$(pwd)" >> ~/.bashrc
 source ~/.bashrc
-###14. Copy File
-###Copy the necessary file to the target directory:
+- 14. Copy File
+- Copy the necessary file to the target directory:
 
 bash
 cp $EVALUATIONMASTER/Substitude/KarmaDock/dataset/graph_obj.py $EVALUATIONMASTER/Support_software/KarmaDock/dataset/graph_obj.py
-###15. Complete Installation
-###After completing the above steps, the installation process is finished. You can now use the installed software.
+- 15. Complete Installation
+- After completing the above steps, the installation process is finished. You can now use the installed software.
