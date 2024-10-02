@@ -58,14 +58,14 @@ def smi_to_csv(smi_file, csv_file):
             if len(parts) > 1:
                 smiles = parts[1]  # 假设 SMILES 数据是每行的第二部分
                 name = f"decoy_{decoy_counter}"  # 生成新的名称
-                data.append([smiles, name])
+                data.append([smiles, Name])
                 decoy_counter += 1
             else:
                 # 如果没有两个部分，则跳过该行
                 continue
 
         # 转换为DataFrame并添加表头
-        df = pd.DataFrame(data, columns=['smiles', 'name'])
+        df = pd.DataFrame(data, columns=['smiles', 'Name'])
 
         # 保存为CSV
         df.to_csv(csv_file, index=False)
