@@ -157,14 +157,14 @@ class HomeInterface2(ScrollArea):
         # layout samples
         layoutView = SampleCardView(self.tr('Docking Tools For Evaluation'), self.view)
 
-        layoutView.addSampleCard(
-            icon=splitplace,
-            title="Protein-Ligand Split",
-            content=self.tr(
-                "A button to Split ligand and ligand from Complex."),
-            routeKey="layoutInterface",
-            index=101
-        )
+        # layoutView.addSampleCard(
+        #     icon=splitplace,
+        #     title="Protein-Ligand Split",
+        #     content=self.tr(
+        #         "A button to Split ligand and ligand from Complex."),
+        #     routeKey="layoutInterface",
+        #     index=101
+        # )
 
 
         layoutView.addSampleCard(
