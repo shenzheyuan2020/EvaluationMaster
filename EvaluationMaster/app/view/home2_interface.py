@@ -20,7 +20,7 @@ from .SoftGUI.Analysis_UI import AnalDialog
 from .SoftGUI.Evalu_GUI import TabbedGUI
 from .SoftGUI.Virtual_ScreeningGUI import TabbedGUI2
 from .SoftGUI.BK_GUI import BKdialogs
-from .SoftGUI.redockGUI import Redock_Dialog
+from .SoftGUI.RedockGUI import Redock_Dialog
 class BannerWidget(QWidget):
 
     """ Banner widget """
