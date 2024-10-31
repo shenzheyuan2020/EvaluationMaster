@@ -58,16 +58,16 @@ def smi_to_csv(smi_file, csv_file):
             if len(parts) > 1:
                 smiles = parts[1]  # 假设 SMILES 数据是每行的第二部分
                 name = f"decoy_{decoy_counter}"  # 生成新的名称
-                data.append([smiles, Name])
+                data.append([smiles, name])
                 decoy_counter += 1
             else:
                 # 如果没有两个部分，则跳过该行
                 continue
 
-        # 转换为DataFrame并添加表头
+
         df = pd.DataFrame(data, columns=['smiles', 'Name'])
 
-        # 保存为CSV
+
         df.to_csv(csv_file, index=False)
 
     except Exception as e:
@@ -133,18 +133,18 @@ def process_specific_file(csv_file_path, generate_number, valid_number, tool_pat
     smiles_column='smiles'
     os.chdir(save_dir)
     try:
-        # 从 CSV 文件路径中提取文件名（不包含扩展名）
+
         base_name = os.path.splitext(os.path.basename(csv_file_path))[0]
         smi_file_name = f"{base_name}.smi"
 
-        # 生成 SMI 文件名
+
         output_smi_file = os.path.join(os.path.dirname(csv_file_path), smi_file_name)
         
-        # 从 CSV 文件创建 SMI 文件
+
         smi_file_path = create_smi_from_csv(csv_file_path, smiles_column, output_smi_file)
 
         if smi_file_path:
-            # 继续执行原有的 SMI 文件处理流程
+
             process_smi_file(smi_file_path, generate_number,valid_number, tool_path)
             print(f"成功处理 {smi_file_path}")
     except Exception as e:
@@ -152,23 +152,12 @@ def process_specific_file(csv_file_path, generate_number, valid_number, tool_pat
 
 
 def main():
-    # 这里您可以替换为任何其他需要初始化的代码
-    # 例如设置日志、初始化环境变量等
-    # ...
 
-    # 由于 process_specific_file 函数已经处理了从 CSV 到 SMI 的转换
-    # 因此，这里不需要再单独进行这一步
     generate_number = int(sys.argv[1])
     valid_number = int(sys.argv[2])
     csv_file = sys.argv[3]
     tool_path  = sys.argv[4]
     save_dir = sys.argv[5]
-    # # 假设这里有一个 CSV 文件路径
-    # csv_file = "working_place/lig/DDR1_clus.csv"  # 替换为您的 CSV 文件路径
-    # generate_number = 100  # 生成的 decoy 数量
-    # valid_number = 50  # 评估的 decoy 数量
-    # tool_path = "working_place/lig/"  # 替换为您的工具路径
-    # # 直接调用 process_specific_file 函数处理 CSV 文件
     process_specific_file(csv_file, generate_number, valid_number, tool_path, save_dir)
 
 if __name__ == '__main__':
