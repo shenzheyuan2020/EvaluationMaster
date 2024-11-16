@@ -20,9 +20,7 @@ from .SoftGUI.Analysis_UI import AnalDialog
 from .SoftGUI.Evalu_GUI import TabbedGUI
 from .SoftGUI.Virtual_ScreeningGUI import TabbedGUI2
 from .SoftGUI.BK_GUI import BKdialogs
-from .SoftGUI.Redock_GUI import Redock_Dialog
 class BannerWidget(QWidget):
-
     """ Banner widget """
 
     def __init__(self, parent=None):
@@ -30,7 +28,7 @@ class BannerWidget(QWidget):
         self.setFixedHeight(336)
      
         self.vBoxLayout = QVBoxLayout(self)
-        self.galleryLabel = QLabel('EvaluationMaster', self)
+        self.galleryLabel = QLabel('Deeplight', self)
         current_dir = os.getcwd()
         img_dir = current_dir + "/images/header1.png"
         self.banner = QPixmap(img_dir)
@@ -146,27 +144,15 @@ class HomeInterface2(ScrollArea):
 
         Vinaplace = os.getcwd() + "/images/controls/Button7.png"
         Ledockplace =os.getcwd() + "/images/controls/Button8.png"
-        splitplace=os.getcwd() + "/images/controls/Button10.png"
+        Glideplace=os.getcwd() + "/images/controls/Button10.png"
         AutodockGPUplace=os.getcwd() + "/images/controls/Button11.png"
         Tabbedplace=os.getcwd() + "/images/controls/Button13.png"
         virtualscreeningplace=os.getcwd() + "/images/controls/Button14.png"
         KarmaDockplace=os.getcwd() + "/images/controls/Button15.png"
         Analplace=os.getcwd() + "/images/controls/Button16.png"
-        pymolplace=os.getcwd() + "/images/controls/Button17.png"
-        redockplace= os.getcwd() + "/images/controls/Button18.png"
+
         # layout samples
-        layoutView = SampleCardView(self.tr('Docking Tools For Evaluation'), self.view)
-
-        # layoutView.addSampleCard(
-        #     icon=splitplace,
-        #     title="Protein-Ligand Split",
-        #     content=self.tr(
-        #         "A button to Split ligand and ligand from Complex."),
-        #     routeKey="layoutInterface",
-        #     index=101
-        # )
-
-
+        layoutView = SampleCardView(self.tr('Evaluation_part'), self.view)
         layoutView.addSampleCard(
             icon=Vinaplace,
             title="Vina",
@@ -175,10 +161,6 @@ class HomeInterface2(ScrollArea):
             routeKey="layoutInterface",
             index=20
         )
-
-
-
-
 
         layoutView.addSampleCard(
             icon=KarmaDockplace,
@@ -199,6 +181,15 @@ class HomeInterface2(ScrollArea):
         )
 
 
+        # layoutView.addSampleCard(
+        #     icon=Glideplace,
+        #     title="Glide_Evaluation",
+        #     content=self.tr(
+        #         "A button to call the Glide function."),
+        #     routeKey="layoutInterface",
+        #     index=22
+        # )
+
 
 
         layoutView.addSampleCard(
@@ -210,6 +201,23 @@ class HomeInterface2(ScrollArea):
             index=23
         )
 
+        # layoutView.addSampleCard(
+        #     icon=Tabbedplace,
+        #     title="Evaluation_workflow",
+        #     content=self.tr(
+        #         "A button to call the Evaluation function."),
+        #     routeKey="layoutInterface",
+        #     index=24
+        # )
+
+        # layoutView.addSampleCard(
+        #     icon=virtualscreeningplace,
+        #     title="VirtualScreening_Evaluation",
+        #     content=self.tr(
+        #         "A button to call the VirtualScreening function."),
+        #     routeKey="layoutInterface",
+        #     index=25
+        # )
 
         self.vBoxLayout.addWidget(layoutView)
 
@@ -246,28 +254,205 @@ class HomeInterface2(ScrollArea):
         )
         self.vBoxLayout.addWidget(materialView)
 
-        layoutView.addSampleCard(
-            icon=redockplace,
-            title="Redock",
-            content=self.tr(
-                "A button to call the ReDock function."),
-            routeKey="layoutInterface",
-            index=28
-        )        
 
-        materialView.addSampleCard(
-            icon=pymolplace,
-            title="Pymol Calling",
-            content=self.tr(
-                "A button to call pymol function."),
-            routeKey="materialInterface",
-            index=102
-        )
-        self.vBoxLayout.addWidget(materialView)
+        # # menu samples
+        # menuView = SampleCardView(self.tr('Menu & toolbars samples'), self.view)
+        # menuView.addSampleCard(
+        #     icon=":/gallery/images/controls/MenuFlyout.png",
+        #     title="RoundMenu",
+        #     content=self.tr(
+        #         "Shows a contextual list of simple commands or options."),
+        #     routeKey="menuInterface",
+        #     index=0
+        # )
+        # menuView.addSampleCard(
+        #     icon=":/gallery/images/controls/CommandBar.png",
+        #     title="CommandBar",
+        #     content=self.tr(
+        #         "Shows a contextual list of simple commands or options."),
+        #     routeKey="menuInterface",
+        #     index=2
+        # )
+        # menuView.addSampleCard(
+        #     icon=":/gallery/images/controls/CommandBarFlyout.png",
+        #     title="CommandBarFlyout",
+        #     content=self.tr(
+        #         "A mini-toolbar displaying proactive commands, and an optional menu of commands."),
+        #     routeKey="menuInterface",
+        #     index=3
+        # )
+        # self.vBoxLayout.addWidget(menuView)
 
+        # # navigation
+        # navigationView = SampleCardView(self.tr('Navigation'), self.view)
+        # navigationView.addSampleCard(
+        #     icon=":/gallery/images/controls/BreadcrumbBar.png",
+        #     title="BreadcrumbBar",
+        #     content=self.tr(
+        #         "Shows the trail of navigation taken to the current location."),
+        #     routeKey="navigationViewInterface",
+        #     index=0
+        # )
+        # navigationView.addSampleCard(
+        #     icon=":/gallery/images/controls/Pivot.png",
+        #     title="Pivot",
+        #     content=self.tr(
+        #         "Presents information from different sources in a tabbed view."),
+        #     routeKey="navigationViewInterface",
+        #     index=1
+        # )
+        # navigationView.addSampleCard(
+        #     icon=":/gallery/images/controls/TabView.png",
+        #     title="TabView",
+        #     content=self.tr(
+        #         "Presents information from different sources in a tabbed view."),
+        #     routeKey="navigationViewInterface",
+        #     index=3
+        # )
+        # self.vBoxLayout.addWidget(navigationView)
+
+        # # scroll samples
+        # scrollView = SampleCardView(self.tr('Scrolling samples'), self.view)
+        # scrollView.addSampleCard(
+        #     icon=":/gallery/images/controls/ScrollViewer.png",
+        #     title="ScrollArea",
+        #     content=self.tr(
+        #         "A container control that lets the user pan and zoom its content smoothly."),
+        #     routeKey="scrollInterface",
+        #     index=0
+        # )
+        # scrollView.addSampleCard(
+        #     icon=":/gallery/images/controls/PipsPager.png",
+        #     title="PipsPager",
+        #     content=self.tr(
+        #         "A control to let the user navigate through a paginated collection when the page numbers do not need to be visually known."),
+        #     routeKey="scrollInterface",
+        #     index=3
+        # )
+        # self.vBoxLayout.addWidget(scrollView)
+
+        # # state info samples
+        # stateInfoView = SampleCardView(self.tr('Status & info samples'), self.view)
+        # stateInfoView.addSampleCard(
+        #     icon=":/gallery/images/controls/ProgressRing.png",
+        #     title="StateToolTip",
+        #     content=self.tr(
+        #         "Shows the apps progress on a task, or that the app is performing ongoing work that does block user interaction."),
+        #     routeKey="statusInfoInterface",
+        #     index=0
+        # )
+        # stateInfoView.addSampleCard(
+        #     icon=":/gallery/images/controls/InfoBadge.png",
+        #     title="InfoBadge",
+        #     content=self.tr(
+        #         "An non-intrusive Ul to display notifications or bring focus to an area."),
+        #     routeKey="statusInfoInterface",
+        #     index=3
+        # )
+        # stateInfoView.addSampleCard(
+        #     icon=":/gallery/images/controls/InfoBar.png",
+        #     title="InfoBar",
+        #     content=self.tr(
+        #         "An inline message to display app-wide status change information."),
+        #     routeKey="statusInfoInterface",
+        #     index=4
+        # )
+        # stateInfoView.addSampleCard(
+        #     icon=":/gallery/images/controls/ProgressBar.png",
+        #     title="ProgressBar",
+        #     content=self.tr(
+        #         "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."),
+        #     routeKey="statusInfoInterface",
+        #     index=8
+        # )
+        # stateInfoView.addSampleCard(
+        #     icon=":/gallery/images/controls/ProgressRing.png",
+        #     title="ProgressRing",
+        #     content=self.tr(
+        #         "Shows the apps progress on a task, or that the app is performing ongoing work that doesn't block user interaction."),
+        #     routeKey="statusInfoInterface",
+        #     index=10
+        # )
+        # stateInfoView.addSampleCard(
+        #     icon=":/gallery/images/controls/ToolTip.png",
+        #     title="ToolTip",
+        #     content=self.tr(
+        #         "Displays information for an element in a pop-up window."),
+        #     routeKey="statusInfoInterface",
+        #     index=1
+        # )
+        # self.vBoxLayout.addWidget(stateInfoView)
+
+        # # text samples
+        # textView = SampleCardView(self.tr('Text samples'), self.view)
+        # textView.addSampleCard(
+        #     icon=":/gallery/images/controls/TextBox.png",
+        #     title="LineEdit",
+        #     content=self.tr("A single-line plain text field."),
+        #     routeKey="textInterface",
+        #     index=0
+        # )
+        # textView.addSampleCard(
+        #     icon=":/gallery/images/controls/PasswordBox.png",
+        #     title="PasswordLineEdit",
+        #     content=self.tr("A control for entering passwords."),
+        #     routeKey="textInterface",
+        #     index=2
+        # )
+        # textView.addSampleCard(
+        #     icon=":/gallery/images/controls/NumberBox.png",
+        #     title="SpinBox",
+        #     content=self.tr(
+        #         "A text control used for numeric input and evaluation of algebraic equations."),
+        #     routeKey="textInterface",
+        #     index=3
+        # )
+        # textView.addSampleCard(
+        #     icon=":/gallery/images/controls/RichEditBox.png",
+        #     title="TextEdit",
+        #     content=self.tr(
+        #         "A rich text editing control that supports formatted text, hyperlinks, and other rich content."),
+        #     routeKey="textInterface",
+        #     index=8
+        # )
+        # self.vBoxLayout.addWidget(textView)
+
+        # # view samples
+        # collectionView = SampleCardView(self.tr('View samples'), self.view)
+        # collectionView.addSampleCard(
+        #     icon=":/gallery/images/controls/ListView.png",
+        #     title="ListView",
+        #     content=self.tr(
+        #         "A control that presents a collection of items in a vertical list."),
+        #     routeKey="viewInterface",
+        #     index=0
+        # )
+        # collectionView.addSampleCard(
+        #     icon=":/gallery/images/controls/DataGrid.png",
+        #     title="TableView",
+        #     content=self.tr(
+        #         "The DataGrid control provides a flexible way to display a collection of data in rows and columns."),
+        #     routeKey="viewInterface",
+        #     index=1
+        # )
+        # collectionView.addSampleCard(
+        #     icon=":/gallery/images/controls/TreeView.png",
+        #     title="TreeView",
+        #     content=self.tr(
+        #         "The TreeView control is a hierarchical list pattern with expanding and collapsing nodes that contain nested items."),
+        #     routeKey="viewInterface",
+        #     index=2
+        # )
+        # collectionView.addSampleCard(
+        #     icon=":/gallery/images/controls/FlipView.png",
+        #     title="FlipView",
+        #     content=self.tr(
+        #         "Presents a collection of items that the user can flip through,one item at a time."),
+        #     routeKey="viewInterface",
+        #     index=4
+        # )
+        # self.vBoxLayout.addWidget(collectionView)
     def on_sample_card_clicked(self, routeKey, index):
-        if routeKey == "layoutInterface" and index == 101:  # Adjust these conditions as necessary
-            self.open_split_dialog()
         if routeKey == "layoutInterface" and index == 20:  # Adjust these conditions as necessary
             self.open_vina_dialog()
         if routeKey == "layoutInterface" and index == 21:  # Adjust these conditions as necessary
@@ -284,15 +469,6 @@ class HomeInterface2(ScrollArea):
             self.open_KarmaDock_Dialog()
         if routeKey == "materialInterface" and index == 27:  # Adjust these conditions as necessary
             self.open_AnalDialog()
-        if routeKey == "layoutInterface" and index == 28:  # Adjust these conditions as necessary
-            self.open_Redock_Dialog()
-        if routeKey == "materialInterface" and index == 102:  # Adjust these conditions as necessary
-            self.open_pymol()
-
-
-    def open_split_dialog(self):
-        dialog = Redock_Dialog(self)
-        dialog.exec_()
 
     def open_vina_dialog(self):
         dialog = vinadialogs(self)
@@ -301,7 +477,7 @@ class HomeInterface2(ScrollArea):
     def open_ledock_dialog(self):
         dialog = ledockdialogs(self)
         dialog.exec_()
-
+    
     def open_glide_dialog(self):
         dialog = glidedialogs(self)
         dialog.exec_()
@@ -322,10 +498,6 @@ class HomeInterface2(ScrollArea):
         dialog = KarmaDock_Dialog(self)
         dialog.show()
 
-    def open_Redock_Dialog(self):
-        dialog = Redock_Dialog(self)
-        dialog.show()
-
     def open_AnalDialog(self):
         dialog = AnalDialog(self)
         dialog.show()
@@ -333,6 +505,3 @@ class HomeInterface2(ScrollArea):
     def open_BK_dialog(self):
         dialog = BKdialogs(self)
         dialog.exec_()
-    
-    def open_pymol(self):
-        os.system("pymol")
