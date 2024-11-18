@@ -1,4 +1,4 @@
-# EvaluationMaster
+![image](https://github.com/user-attachments/assets/6367f1de-0503-4851-be28-00d8ca53efeb)# EvaluationMaster
 
 EvaluationMaster is a tool focused on chemical data processing and simulation, designed to assist researchers and developers in efficiently screening and evaluating compounds.
 
@@ -9,7 +9,7 @@ EvaluationMaster is a tool focused on chemical data processing and simulation, d
 - **User Interface**: Offers a PyQt-based graphical user interface, easy to operate and visualize data.
 
 Tutorial
-A comprehensive tutorial for EvaluationMaster is available [here](https://razarbkims.feishu.cn/docx/MlFVdEhMfoscatx7ZObcnrn4nIh.). 
+A comprehensive tutorial for EvaluationMaster is available [here](https://razarbkims.feishu.cn/docx/MlFVdEhMfoscatx7ZObcnrn4nIh). 
 This tutorial provides step-by-step guidance on using the tool, covering all use cases and offering helpful instructions for beginners.
 
 ## Updated notice （20241016）
