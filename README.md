@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/6367f1de-0503-4851-be28-00d8ca53efeb)# EvaluationMaster
 
 EvaluationMaster is a tool focused on chemical data processing and simulation, designed to assist researchers and developers in efficiently screening and evaluating compounds.
 
