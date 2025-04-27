@@ -144,7 +144,7 @@
 #     cleaned_df = cleaned_df.drop_duplicates(subset='cleaned_smiles')
     
 #     # 更新compounds_df以包含清洗后的smiles
-#     compounds_df['cleaned_smiles'] = [pair[1] for pair in clean_smiles_pairs][:len(compounds_df)]
+#     compounds_df['smiles'] = [pair[1] for pair in clean_smiles_pairs][:len(compounds_df)]
     
 #     # 保存清洗后的数据为CSV
 #     cleaned_csv_file_path = os.path.join(save_dir, f'{filter_name}_clean.csv')
@@ -257,10 +257,10 @@ def main(csv_file_path, filter_name, save_dir):
 
     # 清洗 SMILES 数据并返回清洗后的结果
     clean_smiles_list = clean_smiles(compounds_df['smiles'])
-    compounds_df['cleaned_smiles'] = clean_smiles_list
+    compounds_df['smiles'] = clean_smiles_list
 
     # 移除清洗失败的行
-    compounds_df = compounds_df[compounds_df['cleaned_smiles'].notna()]
+    compounds_df = compounds_df[compounds_df['smiles'].notna()]
     
     # 保存清洗后的数据为 CSV
     cleaned_csv_file_path = os.path.join(save_dir, f'{filter_name}_clean.csv')
